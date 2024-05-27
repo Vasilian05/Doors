@@ -7,17 +7,15 @@ class Product extends Dbh {
     private $img;
     private $category;
     private $description;
-    private $model;
 
-    private function __construct($name, $img, $category, $description, $model){
+    private function __construct($name, $img, $category, $description){
         $this->name=$name;
         $this->img=$img;
         $this->category=$category;
         $this->description=$description;
-        $this->model=$model;
     }
 
-    
+
 
     
 }
