@@ -8,7 +8,7 @@ if(isset($_POST['btn'])){
     $image = $_FILES['image'];
     $door = new Product($name, $category, $description, $_FILES["image"]);
 
-
+    $door->addItem();
 }
 ?>
 <form method="POST" class="form m-auto w-50 mt-5" enctype="multipart/form-data">

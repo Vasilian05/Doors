@@ -24,6 +24,15 @@ class Product extends Dbh {
         }
     }
 
+    private function getCategory(){
+
+        if ($this->category == "interior") {
+            return 1;
+        }else if ($this->category == "exterior") {
+            return 2;
+        }
+    }
+
     private function uploadImage() {
         $errors = array();
 
@@ -60,19 +69,21 @@ class Product extends Dbh {
 
         return $errors; // Return an array of errors
     }
+
+    
     //check if the door is interior or exterior
 
     //query to insert all values in the database 
-    private function insertValues(){
+    private function insertValues($image_path){
 
-        $stmt = $this->connect()->prepare('INSERT INTO Doors(category_id, name, description, image) VALUES(?, ?, ?, ?)');
-
-        if($stmt->execute($this->category, $this->name, $this->description, $this->image)){
+        $stmt = $this->connect()->prepare('INSERT INTO Door(category_id, name, description, image) VALUES(?, ?, ?, ?)');
+        
+        if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path])){
             echo "Продуктът е качен успешно!";
         }else{
             echo "Продуктът не е качен";
         }
-
+        
     }
 
     //check validations and insert products in DB 
@@ -80,7 +91,6 @@ class Product extends Dbh {
 
         $errors = [];
         $image_path = $this->uploadImage();
-
         if($image_path == null){
             array_push($errors, "Размерът на файла е твърде голям или е в непозволен формат");
         }
@@ -88,9 +98,10 @@ class Product extends Dbh {
             array_push($errors, $this->checkEmpty());
         }
 
+        
         //if there's no errors inser the door in DB
         if(empty($errors)){
-            $this->insertValues();
+            $this->insertValues($image_path);
         }
     }
 
