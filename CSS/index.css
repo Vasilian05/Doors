@@ -1,0 +1,31 @@
+main {
+    width: 100%;
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+    background-image: url(../images/triangle-mosaic.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main h1{
+    margin-bottom: 5%;
+}
+main .main-intro {
+    margin-right: 40px;
+    padding-bottom: 8vh;
+
+}
+main .quote {
+    padding-bottom: 8vh;
+}
+
+main .quotes p {
+    border-left: 3px solid #2e3134;
+    padding-left: 20px;
+    margin: 40px 0;
+    
+}
+main .quotes p:nth-child(2) {
+    margin-left:100px;
+}
