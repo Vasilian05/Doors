@@ -9,12 +9,10 @@ class Product extends Dbh {
     private $allowedExtensions = array('jpg', 'jpeg', 'png', 'webp');
     private $maxFileSize = 500000; // 500KB
 
-    private function __construct($name, $category, $description, $allowedExtensions, $maxFileSize){
+    private function __construct($name, $category, $description){
         $this->name=$name;
         $this->category=$category;
         $this->description=$description;
-        $this->allowedExtensions=$allowedExtensions;
-        $this->maxFileSize=$maxFileSize;
 
     }
 
@@ -66,12 +64,14 @@ class Product extends Dbh {
     //import the image path to the database
 
     //import the name of the door 
-    private function insertValues(){
+    private function insertValues($file){
 
-        $stmt = $this->connect()->prepare('INSERT INTO Doors(category_id, name, description) VALUES(?, ?, ?)');
+        $stmt = $this->connect()->prepare('INSERT INTO Doors(category_id, name, description, image) VALUES(?, ?, ?, ?)');
 
-        if($stmt->execute($this->category, $this->name, $this->description)){
-            
+        if($stmt->execute($this->category, $this->name, $this->description, $file)){
+            echo "Продуктът е качен успешно!";
+        }else{
+            echo "Продуктът не е качен";
         }
 
     }
