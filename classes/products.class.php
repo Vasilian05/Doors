@@ -18,13 +18,20 @@ class Product extends Dbh {
 
     }
 
-    public function uploadImage() {
+    private function checkEmpty(){
+        if($this->name == "" || $this->category == "" || $this->description == ""){
+            return "Всички полета трябва да бъдат попълнени";
+        }
+    }
+
+    private function uploadImage() {
         $errors = array();
 
         // Validate file type
         $fileExtension = pathinfo($this->image['name'], PATHINFO_EXTENSION);
         if (!in_array($fileExtension, $this->allowedExtensions)) {
             $errors[] = "Само JPG, JPEG, PNG, и WEBP формати са позволени";
+
         }
 
         // Validate file size
@@ -46,31 +53,21 @@ class Product extends Dbh {
                 return $targetFile; // Return the path to the uploaded file
             } else {
                 $errors[] = "Sorry, there was an error uploading your file.";
+
+
             }
         }
 
         return $errors; // Return an array of errors
     }
     //check if the door is interior or exterior
-    public function getCategory(){
-        if($this->category == "interior"){
-            //call method to import images in interior folder here
-        }else{
-            //call method to import images in exterior folder here
-        }
 
-
-    }
-
-    //get the image and put it in the folder
-    //import the image path to the database
-
-    //import the name of the door 
-    private function insertValues($file){
+    //query to insert all values in the database 
+    private function insertValues(){
 
         $stmt = $this->connect()->prepare('INSERT INTO Doors(category_id, name, description, image) VALUES(?, ?, ?, ?)');
 
-        if($stmt->execute($this->category, $this->name, $this->description, $file)){
+        if($stmt->execute($this->category, $this->name, $this->description, $this->image)){
             echo "Продуктът е качен успешно!";
         }else{
             echo "Продуктът не е качен";
@@ -78,7 +75,24 @@ class Product extends Dbh {
 
     }
 
-    //import the description
+    //check validations and insert products in DB 
+    public function addItem(){
+
+        $errors = [];
+        $image_path = $this->uploadImage();
+
+        if($image_path == null){
+            array_push($errors, "Размерът на файла е твърде голям или е в непозволен формат");
+        }
+        if($this->checkEmpty() != ""){
+            array_push($errors, $this->checkEmpty());
+        }
+
+        //if there's no errors inser the door in DB
+        if(empty($errors)){
+            $this->insertValues();
+        }
+    }
 
 
 

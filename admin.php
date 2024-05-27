@@ -8,8 +8,6 @@ if(isset($_POST['btn'])){
     $image = $_FILES['image'];
     $door = new Product($name, $category, $description, $_FILES["image"]);
 
-    
-    var_dump($door->uploadImage($_FILES["image"]));
 
 }
 ?>
