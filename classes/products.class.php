@@ -6,27 +6,29 @@ class Product extends Dbh {
     private $name;
     private $category;
     private $description;
+    private $image;
     private $allowedExtensions = array('jpg', 'jpeg', 'png', 'WEBP');
     private $maxFileSize = 500000; // 500KB
 
-    public function __construct($name, $category, $description){
+    public function __construct($name, $category, $description, $image){
         $this->name=$name;
         $this->category=$category;
         $this->description=$description;
+        $this->image=$image;
 
     }
 
-    public function uploadImage($file) {
+    public function uploadImage() {
         $errors = array();
 
         // Validate file type
-        $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
+        $fileExtension = pathinfo($this->image['name'], PATHINFO_EXTENSION);
         if (!in_array($fileExtension, $this->allowedExtensions)) {
             $errors[] = "Само JPG, JPEG, PNG, и WEBP формати са позволени";
         }
 
         // Validate file size
-        if ($file['size'] > $this->maxFileSize) {
+        if ($this->image['size'] > $this->maxFileSize) {
             $errors[] = "Размерът на файла е твърде голям, максимумът е 500KB.";
         }
 
@@ -39,8 +41,8 @@ class Product extends Dbh {
                 $targetDir = "exterior_img/";
             }
             
-            $targetFile = $targetDir . basename($file['name']);
-            if (move_uploaded_file($file['tmp_name'], $targetFile)) {
+            $targetFile = $targetDir . basename($this->image['name']);
+            if (move_uploaded_file($this->image['tmp_name'], $targetFile)) {
                 return $targetFile; // Return the path to the uploaded file
             } else {
                 $errors[] = "Sorry, there was an error uploading your file.";

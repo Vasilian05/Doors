@@ -6,7 +6,7 @@ if(isset($_POST['btn'])){
     $description = $_POST['description'];
     $category = $_POST['category'];
     $image = $_FILES['image'];
-    $door = new Product($name, $category, $description);
+    $door = new Product($name, $category, $description, $_FILES["image"]);
 
     
     var_dump($door->uploadImage($_FILES["image"]));
