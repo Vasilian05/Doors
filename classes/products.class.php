@@ -6,10 +6,10 @@ class Product extends Dbh {
     private $name;
     private $category;
     private $description;
-    private $allowedExtensions = array('jpg', 'jpeg', 'png', 'webp');
+    private $allowedExtensions = array('jpg', 'jpeg', 'png', 'WEBP');
     private $maxFileSize = 500000; // 500KB
 
-    private function __construct($name, $category, $description){
+    public function __construct($name, $category, $description){
         $this->name=$name;
         $this->category=$category;
         $this->description=$description;
@@ -20,7 +20,7 @@ class Product extends Dbh {
         $errors = array();
 
         // Validate file type
-        $fileExtension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $fileExtension = pathinfo($file['name'], PATHINFO_EXTENSION);
         if (!in_array($fileExtension, $this->allowedExtensions)) {
             $errors[] = "Само JPG, JPEG, PNG, и WEBP формати са позволени";
         }
