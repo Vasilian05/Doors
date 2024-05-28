@@ -97,7 +97,6 @@ class Product extends Dbh {
         if($this->checkEmpty() != ""){
             array_push($errors, $this->checkEmpty());
         }
-
         
         //if there's no errors inser the door in DB
         if(empty($errors)){
