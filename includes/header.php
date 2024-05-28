@@ -31,8 +31,8 @@
             Врати
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Интериорни</a></li>
-            <li><a class="dropdown-item" href="#">Входни</a></li>
+            <li><a class="dropdown-item" href="products.php?category=interior">Интериорни</a></li>
+            <li><a class="dropdown-item" href="products.php?category=exterior">Входни</a></li>
           </ul>
         </li>
       </ul>

@@ -38,10 +38,12 @@ if(isset($_POST['btn'])){
 
 <style>
     body {
-        margin-top: 200px;
+        margin-top: 100px;
+
     }
-    nav {
-        visibility: hidden;
+    .form {
+        min-height: 70vh;
     }
+
 </style>
 <?php include_once "includes/footer.php";?>
