@@ -22,27 +22,28 @@ if ($category === 'interior') {
     // Handle invalid category or no category selected
     echo "<p>No category selected or invalid category.</p>";
 }
+print_r($data[0]);
 ?>
 
 <section class="products mt-5">
-<div class="container-fluid text-center">
-    <div class="row">
-        <?php foreach($data as $door): ?>
-            <div class="col-md-3 mt-3"> <!-- Adjust col-md-* as needed -->
-                <div class="card m-auto w-50">
-                    <img src="<?php echo $door['image']; ?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $door['name'] ?></h5>
-                        <a href="#" class="btn btn-outline-dark">Виж повече</a>
+    <div class="container-fluid text-center">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            <?php foreach($data as $door): ?>
+                <div class="col mt-5">
+                    <div class="card m-auto w-50">
+                        <img src="<?php echo $door['image']; ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $door['name'] ?></h5>
+                            <a href="product.php?id=<?php echo $door['door_id']; ?>" class="btn btn-outline-dark">Виж повече</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
+</section>
 
-    
-    </section>
+
 
 
 <style>
