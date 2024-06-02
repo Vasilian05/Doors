@@ -22,7 +22,7 @@ if ($category === 'interior') {
     // Handle invalid category or no category selected
     echo "<p>No category selected or invalid category.</p>";
 }
-print_r($data[0]);
+
 ?>
 
 <section class="products mt-5">
@@ -34,7 +34,7 @@ print_r($data[0]);
                         <img src="<?php echo $door['image']; ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $door['name'] ?></h5>
-                            <a href="product.php?id=<?php echo $door['door_id']; ?>" class="btn btn-outline-dark">Виж повече</a>
+                            <a href="product.php?category=<?php echo $category; ?>&id=<?php echo $door['door_id']; ?>" class="btn btn-outline-dark">Виж повече</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,11 @@ print_r($data[0]);
     </div>
 </section>
 
-
+<?php 
+if(isset($_GET['door_id'])){
+    echo "it's set";
+}
+?>
 
 
 <style>
