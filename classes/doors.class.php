@@ -15,4 +15,21 @@ class Doors extends Dbh {
             exit();
         }
     }
+
+    public function getDoor($id){
+
+        //get door from db
+        $stmt = $this->connect()->prepare("SELECT * FROM Door WHERE door_id = ?");
+
+        if($stmt->execute([$id])){
+            //if statemet is successfull fetch the door information
+            $item = $stmt->fetchAll();
+            $stmt = null;
+            return $item;
+        }else{
+            //if statement fails return false
+            $stmt = null;
+            return false;
+        }
+    }
 }
