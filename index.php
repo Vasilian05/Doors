@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="CSS/index.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
     
     
 </head>
@@ -27,14 +29,14 @@
     
     <section class="info">
     
-        <div class="container text-center mt-5">
-            <div class="row align-items-start">
-                <div class="col-8   ">
+        <div class="container-fluid text-center mt-5">
+            <div class="row align-items-start ">
+                <div class="col-md-8 order-md-1 ">
                 <h2>Кои сме ние?</h2>
                 <p class="mt-5 fs-4">Нашата компания е водещ производител на врати, предлагащ широка гама от висококачествени продукти за всеки вкус и стил. Съчетаваме изключителен дизайн със здрави материали и иновативни технологии, за да осигурим функционалност и елегантност. Нашите врати са изработени с внимание към детайла и се предлагат в разнообразие от цветове, размери и структури, което ги прави подходящи за всяко обитание или бизнес среда.</p>
                 </div>
-                <div class="col-4">
-                    <img src="images/blue-door-room-6toqsy.jpg" class="rounded w-100 float-end" alt="...">
+                <div class="col-md-4 order-md-0">
+                    <img src="images/blue-door-room-6toqsy.jpg" class="rounded w-100 float-end blue-door" alt="...">
                 </div>
             </div>
         </div>
@@ -83,8 +85,46 @@
     </section>
 
     </div>    
+    <!-- Slider main container -->
+<div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide">Slide 1</div>
+    <div class="swiper-slide">Slide 2</div>
+    <div class="swiper-slide">Slide 3</div>
+    ...
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
 
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
 
+<script>
+    const swiper = new Swiper('.swiper-container', {
 
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <?php include 'includes/footer.php' ?>

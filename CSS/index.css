@@ -29,3 +29,6 @@ main .quotes p {
 main .quotes p:nth-child(2) {
     margin-left:100px;
 }
+.swiper-container {
+    height: 500px
+}
