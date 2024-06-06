@@ -86,7 +86,7 @@
 
     </div>    
     <!-- Slider main container -->
-<div class="swiper-container">
+<div class="swiper">
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
@@ -103,8 +103,9 @@
   <div class="swiper-button-next"></div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    const swiper = new Swiper('.swiper-container', {
+    const swiper = new Swiper('.swiper', {
 
   // If we need pagination
   pagination: {
@@ -114,7 +115,7 @@
   // Navigation arrows
   navigation: {
     nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    prevEl: '.swiper-buttons-prev',
   },
 
   // And if we need scrollbar
@@ -125,6 +126,5 @@
 
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <?php include 'includes/footer.php' ?>

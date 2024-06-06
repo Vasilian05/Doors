@@ -12,6 +12,7 @@ if(isset($_POST['btn'])){
 }
 ?>
 <form method="POST" class="form m-auto w-50 mt-5" enctype="multipart/form-data">
+    <h1 class="text-center">Добави продукт</h1>
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Име</label>   
           <input required type="text" class="form-control" name="name">
@@ -36,14 +37,23 @@ if(isset($_POST['btn'])){
         <button type="submit" name="btn" class="btn btn-outline-dark">Качи продукт</button>
       </form>
 
-<style>
-    body {
-        margin-top: 100px;
-
-    }
-    .form {
-        min-height: 70vh;
-    }
-
-</style>
+      <section class="dashboard mt-5">
+        <h3 class="text-center">Инвентар</h3>
+      <table class="table w-75 m-auto">
+  <thead>
+    <tr>
+      <th scope="col">Име</th>
+      <th scope="col">Категория</th>
+      <th scope="col">Премахни</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+    </tr>
+  </tbody>
+</table>S
+      </section>
 <?php include_once "includes/footer.php";?>
