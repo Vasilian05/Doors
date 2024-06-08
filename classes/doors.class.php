@@ -29,6 +29,29 @@ class Doors extends Dbh {
         }
     }
 
+    public function deleteDoor($id){
+        $stmt = $this->connect()->prepare('DELETE FROM Door WHERE door_id = ?');
+
+        if($stmt->execute([$id])){
+            $stmt = null;
+            return true;
+        }else{
+            $stmt = null;
+            return false;
+        }
+    }
+
+    public function deleteFacing($id){
+        $stmt = $this->connect()->prepare('DELETE FROM Facing WHERE door_id = ?');
+
+        if($stmt->execute([$id])){
+            $stmt = null;
+            return true;
+        }else{
+            $stmt = null;
+            return false;
+        }
+    }
     
 
     public function getDoor($id){

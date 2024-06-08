@@ -62,7 +62,7 @@ if(isset($_POST['btn'])){
       <th scope="row"><?php echo $interior[$i]['name']?></th>
       <td>Интериорна</td>
       <td>
-        <form method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" method="POST">
             <button name="remove" class="btn btn-outline-dark">премахни</button>
         </form>
       </td>
@@ -87,7 +87,7 @@ if(isset($_POST['btn'])){
       <th scope="row"><?php echo $exterior[$i]['name']?></th>
       <td>Екстериорна</td>
       <td>
-        <form method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <button name="remove" class="btn btn-outline-dark">премахни</button>
         </form>
       </td>
@@ -112,7 +112,7 @@ if(isset($_POST['btn'])){
       <th scope="row"><?php echo $facing[$i]['name']?></th>
       <td>Облицовка</td>
       <td>
-        <form method="POST">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" method="POST">
             <button name="remove" class="btn btn-outline-dark">премахни</button>
         </form>
       </td>
