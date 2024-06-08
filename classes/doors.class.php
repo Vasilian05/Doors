@@ -16,6 +16,21 @@ class Doors extends Dbh {
         }
     }
 
+    public function getFacing(){
+
+        //make a query to get all items
+        $stmt = $this->connect()->prepare("SELECT * FROM Facing");
+
+        if($stmt->execute()){
+            return $stmt->fetchAll();
+        }else{
+            $stmt = null;
+            exit();
+        }
+    }
+
+    
+
     public function getDoor($id){
 
         //get door from db

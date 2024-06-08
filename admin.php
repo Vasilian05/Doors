@@ -15,6 +15,7 @@ if(isset($_POST['btn'])){
     $doors = new Doors();
     $interior = $doors->getProducts(1);
     $exterior = $doors->getProducts(2);
+    $facing = $doors->getFacing();
 ?>
 <form method="POST" class="form m-auto w-50 mt-5" enctype="multipart/form-data">
     <h1 class="text-center">Добави продукт</h1>
@@ -30,9 +31,9 @@ if(isset($_POST['btn'])){
         <label class="form-label">Категория</label>
             <select required name="category" class="form-select" aria-label="Default select example">
             <option selected value=''>Категория</option>
-            <option value="interior">Интериорна</option>
-            <option value="exterior">Екстериорна</option>
-            <option value="facing">Облицовка</option>
+            <option value="interior">Интериорни</option>
+            <option value="exterior">Екстериорни</option>
+            <option value="facing">Облицовки</option>
             </select>
         </div>
         <div class="mb-3">
@@ -95,5 +96,31 @@ if(isset($_POST['btn'])){
   </tbody>
 </table>
 <?php } ?>
+<?php if(count($facing) > 0) { ?>
+        <h5 class="text-center mt-5">Екстериорни</h5>
+      <table class="table w-75 m-auto">
+  <thead>
+    <tr>
+      <th scope="col">Име</th>
+      <th scope="col">Категория</th>
+      <th scope="col">Премахни</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php for($i = 0; $i < count($facing); $i++) {?>
+    <tr>
+      <th scope="row"><?php echo $facing[$i]['name']?></th>
+      <td>Екстериорна</td>
+      <td>
+        <form method="POST">
+            <button name="remove" class="btn btn-outline-dark">премахни</button>
+        </form>
+      </td>
+    </tr>
+    <?php } ?>
+  </tbody>
+</table>
+<?php } ?>
+
       </section>
 <?php include_once "includes/footer.php";?>
