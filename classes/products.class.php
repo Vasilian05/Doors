@@ -30,7 +30,7 @@ class Product extends Dbh {
             return 1;
         }else if ($this->category == "exterior") {
             return 2;
-        }else if ($this->category == "facing") {
+        }else{
             return 3;
         }
     }
@@ -55,8 +55,10 @@ class Product extends Dbh {
 
             if($this->category == "interior"){
                 $targetDir = "interior_img/";
-            }else{
+            }elseif($this->category == "exterior"){
                 $targetDir = "exterior_img/";
+            }else{
+                $targetDir = "facing_img/";
             }
             
             $targetFile = $targetDir . basename($this->image['name']);
@@ -79,7 +81,7 @@ class Product extends Dbh {
     private function insertValues($image_path){
 
         if($this->category != "facing"){
-            
+
             $stmt = $this->connect()->prepare('INSERT INTO Door(category_id, name, description, image) VALUES(?, ?, ?, ?)');
             
             if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path])){
@@ -87,7 +89,7 @@ class Product extends Dbh {
             }else{
                 echo "Продуктът не е качен";
             }
-        }else{
+        }else {
             $stmt = $this->connect()->prepare('INSERT INTO Facing(category_id, name, description, image) VALUES(?, ?, ?, ?)');
             
             if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path])){
@@ -117,7 +119,22 @@ class Product extends Dbh {
         }
     }
 
-   
+    public function getDoor($id){
+
+        //get door from db
+        $stmt = $this->connect()->prepare("SELECT * FROM Door WHERE door_id = ?");
+
+        if($stmt->execute([$id])){
+            //if statemet is successful
+            $item = $stmt->fetchAll();
+            $stmt = null;
+            return $item;
+        }else{
+            //if statement fails return false
+            $stmt = null;
+            return false;
+        }
+    }
 
     
 }
