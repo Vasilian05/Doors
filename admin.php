@@ -97,7 +97,7 @@ if(isset($_POST['btn'])){
 </table>
 <?php } ?>
 <?php if(count($facing) > 0) { ?>
-        <h5 class="text-center mt-5">Екстериорни</h5>
+        <h5 class="text-center mt-5">Облицовки</h5>
       <table class="table w-75 m-auto">
   <thead>
     <tr>
@@ -110,7 +110,7 @@ if(isset($_POST['btn'])){
     <?php for($i = 0; $i < count($facing); $i++) {?>
     <tr>
       <th scope="row"><?php echo $facing[$i]['name']?></th>
-      <td>Екстериорна</td>
+      <td>Облицовка</td>
       <td>
         <form method="POST">
             <button name="remove" class="btn btn-outline-dark">премахни</button>
