@@ -30,6 +30,8 @@ class Product extends Dbh {
             return 1;
         }else if ($this->category == "exterior") {
             return 2;
+        }else if ($this->category == "facing") {
+            return 3;
         }
     }
 
@@ -76,12 +78,23 @@ class Product extends Dbh {
     //query to insert all values in the database 
     private function insertValues($image_path){
 
-        $stmt = $this->connect()->prepare('INSERT INTO Door(category_id, name, description, image) VALUES(?, ?, ?, ?)');
-        
-        if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path])){
-            echo "Продуктът е качен успешно!";
+        if($this->category != "facing"){
+            
+            $stmt = $this->connect()->prepare('INSERT INTO Door(category_id, name, description, image) VALUES(?, ?, ?, ?)');
+            
+            if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path])){
+                echo "Продуктът е качен успешно!";
+            }else{
+                echo "Продуктът не е качен";
+            }
         }else{
-            echo "Продуктът не е качен";
+            $stmt = $this->connect()->prepare('INSERT INTO Facing(category_id, name, description, image) VALUES(?, ?, ?, ?)');
+            
+            if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path])){
+                echo "Продуктът е качен успешно!";
+            }else{
+                echo "Продуктът не е качен";
+            }
         }
         
     }
