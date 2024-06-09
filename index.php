@@ -113,5 +113,22 @@ const swiper = new Swiper('.swiper', {
 </script>
 
 
-
+<style>
+.swiper-button-prev, .swiper-button-next {
+    color: #000 !important; /* Change arrow color to black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper-button-prev::after, .swiper-button-next::after {
+    color: #000 !important; /* Ensure the arrow itself is black */
+    font-size: 20px; /* Adjust as needed */
+}
+.swiper-pagination-bullet {
+    background: #000 !important; /* Change pagination dots color to black */
+}
+.swiper-pagination-bullet-active {
+    background: #000 !important; /* Change active pagination dot color to black */
+}
+</style>
 <?php include 'includes/footer.php' ?>
