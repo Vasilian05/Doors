@@ -42,7 +42,7 @@ class Doors extends Dbh {
     }
 
     public function deleteFacing($id){
-        $stmt = $this->connect()->prepare('DELETE FROM Facing WHERE door_id = ?');
+        $stmt = $this->connect()->prepare('DELETE FROM Facing WHERE facing_id = ?');
 
         if($stmt->execute([$id])){
             $stmt = null;

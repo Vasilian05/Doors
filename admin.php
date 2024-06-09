@@ -12,6 +12,22 @@ if(isset($_POST['btn'])){
     $item->addItem();
 }
 
+//deleting doors from database
+if(isset($_POST['remove'])){
+    $product_id = $_POST['product'];
+    $delete_product = new Doors();
+    $delete_product->deleteDoor($product_id);
+  
+}
+
+//deleting facings from database
+if(isset($_POST['remove_facing'])){
+    $product_id = $_POST['product'];
+    $delete_product = new Doors();
+    $delete_product->deleteFacing($product_id);
+  
+}
+    //getting all items from database
     $doors = new Doors();
     $interior = $doors->getProducts(1);
     $exterior = $doors->getProducts(2);
@@ -52,6 +68,7 @@ if(isset($_POST['btn'])){
   <thead>
     <tr>
       <th scope="col">Име</th>
+      <th scope="col">Снимка</th>
       <th scope="col">Категория</th>
       <th scope="col">Премахни</th>
     </tr>
@@ -60,9 +77,11 @@ if(isset($_POST['btn'])){
     <?php for($i = 0; $i < count($interior); $i++) {?>
     <tr>
       <th scope="row"><?php echo $interior[$i]['name']?></th>
+      <td><img src="<?php echo $interior[$i]["image"]?>" class="w-25 image-fluid" alt=""></td>
       <td>Интериорна</td>
       <td>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" method="POST">
+            <input type="hidden" value="<?php echo $interior[$i]['door_id']?>"  name="product"></input>
             <button name="remove" class="btn btn-outline-dark">премахни</button>
         </form>
       </td>
@@ -77,6 +96,7 @@ if(isset($_POST['btn'])){
   <thead>
     <tr>
       <th scope="col">Име</th>
+      <th scope="col">Снимка</th>
       <th scope="col">Категория</th>
       <th scope="col">Премахни</th>
     </tr>
@@ -85,9 +105,11 @@ if(isset($_POST['btn'])){
     <?php for($i = 0; $i < count($exterior); $i++) {?>
     <tr>
       <th scope="row"><?php echo $exterior[$i]['name']?></th>
+      <td><img src="<?php echo $exterior[$i]["image"]?>" class="w-25 image-fluid" alt=""></td>
       <td>Екстериорна</td>
       <td>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+            <input type="hidden" value="<?php echo $exterior[$i]['door_id']?>"  name="product"></input>
             <button name="remove" class="btn btn-outline-dark">премахни</button>
         </form>
       </td>
@@ -102,6 +124,7 @@ if(isset($_POST['btn'])){
   <thead>
     <tr>
       <th scope="col">Име</th>
+      <th scope="col">Снимка</th>
       <th scope="col">Категория</th>
       <th scope="col">Премахни</th>
     </tr>
@@ -110,10 +133,12 @@ if(isset($_POST['btn'])){
     <?php for($i = 0; $i < count($facing); $i++) {?>
     <tr>
       <th scope="row"><?php echo $facing[$i]['name']?></th>
+      <td><img src="<?php echo $facing[$i]["image"]?>" class="w-25 image-fluid" alt=""></td>
       <td>Облицовка</td>
       <td>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" method="POST">
-            <button name="remove" class="btn btn-outline-dark">премахни</button>
+            <input type="hidden" value="<?php echo $facing[$i]['facing_id']?>"  name="product"></input>
+            <button name="remove_facing" type="submit" class="btn btn-outline-dark">премахни</button>
         </form>
       </td>
     </tr>
