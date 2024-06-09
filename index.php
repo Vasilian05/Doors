@@ -1,4 +1,10 @@
 <?php include 'includes/header.php' ?>
+<?php include 'classes/doors.class.php';
+
+$doors = new Doors();
+$doors = $doors->getProducts(1);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,90 +47,71 @@
             </div>
         </div>
     
-    
-    </section>
-    
-    
-    <section class="products mt-5">
-    
-        <div class="container-fluid text-center">
-            <div class="row">
-                <div class="col mt-3">
-                    <div class="card m-auto" style="width: 18rem;">
-                    <img src="images/ART-02-1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Врата 1</h5>
-                        <p class="card-text">Врата е масивна, с прости линии, без украса, създава впечатление за мистерия и непроницаемост.</p>
-                        <a href="#" class="btn btn-outline-dark">Виж повече</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="col mt-3">
-                    <div class="card m-auto" style="width: 18rem;">
-                    <img src="images/ART-04-1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Врата 2</h5>
-                        <p class="card-text">Врата е масивна, с прости линии, без украса, създава впечатление за мистерия и непроницаемост.</p>
-                        <a href="#" class="btn btn-outline-dark">Виж повече</a>
-                    </div>
-                    </div>
-                </div>
-                <div class="col mt-3">
-                    <div class="card m-auto" style="width: 18rem;">
-                    <img src="images/ART-05-1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Врата 3</h5>
-                        <p class="card-text">врата е масивна, с прости линии, без украса, създава впечатление за мистерия и непроницаемост.</p>
-                        <a href="#" class="btn btn-outline-dark">Виж повече</a>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
+    <hr>
     </section>
 
     </div>    
     <!-- Slider main container -->
+<!-- Slider main container -->
+<h2 class="text-center mt-5">Потопи се в разнообразието на нашите интериорни врати</h2>
 <div class="swiper">
-  <!-- Additional required wrapper -->
-  <div class="swiper-wrapper">
-    <!-- Slides -->
-    <div class="swiper-slide">Slide 1</div>
-    <div class="swiper-slide">Slide 2</div>
-    <div class="swiper-slide">Slide 3</div>
-    ...
-  </div>
-  <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+        <?php
+            for($i = 0; $i < count($doors); $i++){
 
-  <!-- If we need navigation buttons -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
+                ?>
+                <div class="swiper-slide">
+                    <div class="col mt-3">
+                    <div class="card m-auto" style="width: 18rem;">
+                    <img src="<?php echo $doors[$i]['image'] ?>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $doors[$i]['name'] ?></h5>
+                        <p class="card-text">Врата е масивна, с прости линии, без украса, създава впечатление за мистерия и непроницаемост.</p>
+                        <a href="#" class="btn btn-outline-dark">Виж повече</a>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <?php
+            
+        }
+        ?>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    const swiper = new Swiper('.swiper', {
-
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-buttons-prev',
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
+const swiper = new Swiper('.swiper', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        }
+    },
 });
-
 </script>
+
 
 
 <?php include 'includes/footer.php' ?>
