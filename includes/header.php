@@ -33,7 +33,7 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="products.php?category=interior">Интериорни</a></li>
             <li><a class="dropdown-item" href="products.php?category=exterior">Входни</a></li>
-            <li><a class="dropdown-item" href="products.php?category=all">Всички</a></li>
+            <li><a class="dropdown-item" href="products.php?category=facing">Облицовки</a></li>
           </ul>
         </li>
       </ul>

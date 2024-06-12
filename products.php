@@ -18,8 +18,9 @@ if ($category === 'interior') {
     echo "<h2>Exterior Doors</h2>";
     $data = $doors->getProducts(2);
     // Place your code here to fetch and display exterior door items from the database or any other data source
-} else {
+} else if ($category == "facing"){
     // Handle invalid category or no category selected
+    $data = $doors->getFacing(3);
     echo "<p>No category selected or invalid category.</p>";
 }
 
@@ -38,7 +39,7 @@ if ($category === 'interior') {
                                 Размери: 620 <br>
                                 Комплекта включва крило, каса, первази, уплътнение, брава, панти
                                 В наличност.</p>
-                            <a href="product.php?category=<?php echo $category; ?>&id=<?php echo $door['door_id']; ?>" class="btn btn-outline-dark">Виж повече</a>
+                            <a href="product.php?category=<?php echo $category; ?>&id=<?php echo isset($door['door_id']) ? $door["door_id"] :  $door["facing_id"]; ?>" class="btn btn-outline-dark">Виж повече</a>
                         </div>
                     </div>
                 </div>
