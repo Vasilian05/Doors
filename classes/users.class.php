@@ -56,6 +56,16 @@ class User {
         return $error_message;
     }
 
+    private function validateCompany(){
+        $error_message = "";
+        if(strlen($this->company) > 50 || strlen($this->company) < 3 ){
+            //if its too long or too short
+            $error_message = "Името на компанията трябва да е повече от 3 букви и по-малко от 50";
+        }
+
+        return $error_message;
+    }
+
 
 
 
