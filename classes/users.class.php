@@ -62,7 +62,18 @@ class User {
             //if its too long or too short
             $error_message = "Името на компанията трябва да е повече от 3 букви и по-малко от 50";
         }
+        return $error_message;
+    }
 
+    private function validateCity(){
+        $error_message = "";
+        if(strlen($this->city) < 3 || strlen($this->city) > 24){
+            $error_message = "Името на града не може да е повече от 24 или по-малко 3 букви";
+        }else{
+            if(!ctype_alpha($this->city)){
+                $error_message = "Името на града не може да съдържа цифри или символи";
+            }
+        }
         return $error_message;
     }
 
