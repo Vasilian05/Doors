@@ -1,7 +1,7 @@
 <?php 
 include_once 'config.php';
 
-class User {
+class User extends Dbh {
 
     private $name;
     private $company;
@@ -85,7 +85,31 @@ class User {
         return $error_message;
     }
 
-    
+    private function signUser(){
+        if($this->user_type == "distributor"){
+
+            //of the type is distributor, make the distrinuter equal true and admin false
+            $distributer = true;
+            $admin = false;
+        }else{
+
+            //if the type is not distributer make admin equal true 
+            $distributer = false;
+            $admin = true;
+        }
+
+        $stmt = $this->connect()->prepare("INSERT INTO User(name, company, adress, city, phone, email, is_admin, is_distributor) VALUES ?,?,?,?,?,?,?,?");
+
+        //execute statement for insering user values 
+        if($stmt->execute([$this->name, $this->company, $this->adress, $this->phone, $this->email, $admin, $distributer])){
+            $stmt = null;
+            return true;
+        }else{
+            $stmt = null;
+            return false;
+        }
+    }
+
 
 
 
