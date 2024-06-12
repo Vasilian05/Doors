@@ -52,38 +52,4 @@ if(isset($_GET['door_id'])){
     echo "it's set";
 }
 ?>
-
-Marvel
-Captain America: The First Avenger
-Iron Man 
-Iron Man 2 
-The Incredible Hulk 
-Thor  - six months before Avengers
-The Avengers 
-Iron Man 3  - six months after The Avengers
-Thor: The Dark World - after Avengers but before Ultron
-Captain America: The Winter Soldier - after Avengers but before Ultron
-Guardians of the Galaxy 
-Guardians of the Galaxy 2 
-Avengers: Age of Ultron 
-Ant-Man 
-Captain America: Civil War  - after Ultron and before Infinity War
-Black Widow (2016, excluding post-credits scene) - right after Civil War
-Spider-Man: Homecoming - after Civil War and before Infinity War
-Doctor Strange 
-Black Panther 
-Thor: Ragnarok - after Ultron and before Infinity War
-Avengers: Infinity War 
-Ant-Man and the Wasp  - takes place at the same time as Infinity War since the post-credit scene takes place during the snap.
-Avengers: Endgame 
-Shang-Chi and the Legend of the Ten Rings 
-Spider-Man: Far From Home 
-Eternals 
-Spider-Man: No Way Home 
-Dr. Strange in the Multiverse of Madness 
-Thor: Love and Thunder 
-Black Panther: Wakanda Forever 
-Ant-Man: Quantumania 
-Guardians of the Galaxy: Vol 3 
-
 <?php include_once "includes/footer.php";?>
