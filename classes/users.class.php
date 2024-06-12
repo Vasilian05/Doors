@@ -77,6 +77,17 @@ class User {
         return $error_message;
     }
 
+    private function validateEmail(){
+        $error_message = "";
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $error_message = "Невалиден имейл формат";
+          }
+        return $error_message;
+    }
+
+    
+
+
 
 
 
