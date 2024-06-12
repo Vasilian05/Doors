@@ -24,13 +24,15 @@
     <input required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Парола</label>
-    <input required type="password" class="form-control" id="exampleInputPassword1">
+    <label for="exampleInputEmail1" class="form-label">Телефон</label>
+    <input required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
-  <div class="mb-3 form-check">
-    <input required type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label-dark" for="exampleCheck1">Приемам условията за поверителност</label>
-  </div>
+  <label class="form-label">Категория</label>
+            <select required name="category" class="form-select mb-3" aria-label="Default select example">
+            <option selected value=''>Вид акаунт</option>
+            <option value="interior">Дистрибутор</option>
+            <option value="exterior">Админ</option>
+            </select>
   <button type="submit" class="btn btn-outline-dark">Регистрирай се</button>
 </form>
 
