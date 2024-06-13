@@ -22,6 +22,10 @@ class User extends Dbh {
         $this->email=$email;
         $this->user_type=$user_type;
     }
+    
+    public function setPass($pass){
+        $this->pass=$pass;
+    }
 
     public function setLogin($email, $pass){
         $this->pass=$pass;
