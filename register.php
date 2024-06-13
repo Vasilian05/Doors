@@ -11,13 +11,18 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $user_type = $_POST['user_type'];
+    $pass = $_POST['pass'];
 
    
     $user = new User();
     $user->setRegisterDetails($name, $company, $city, $adress, $email, $phone, $user_type);
+    if($user_type == "admin"){
+        $user->setPass($pass);
+    }
     if($user->AddUser() != ""){
         $errors = $user->AddUser();
     }
+    
 }
 
 ?>
@@ -73,7 +78,7 @@ if(isset($_POST['submit'])){
             </select>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Парола</label>
-        <input required type="email" name="email" class="form-control <?php //echo $errors['email'] != '' ?  'is-invalid' :  "" ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input required type="password" name="pass" class="form-control <?php //echo $errors['email'] != '' ?  'is-invalid' :  "" ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
         <small class="mb-3">Задължително само за админ акаунти</small><br><br>
     <div class="invalid-feedback">
           <?php echo $errors['email']?>
