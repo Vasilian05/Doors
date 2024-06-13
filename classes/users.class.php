@@ -89,19 +89,19 @@ class User extends Dbh {
         if($this->user_type == "distributor"){
 
             //of the type is distributor, make the distrinuter equal true and admin false
-            $distributer = true;
-            $admin = false;
+            $distributer = 1;
+            $admin = 0;
         }else{
 
             //if the type is not distributer make admin equal true 
-            $distributer = false;
-            $admin = true;
+            $distributer = 0;
+            $admin = 1;
         }
 
-        $stmt = $this->connect()->prepare("INSERT INTO User(name, company, adress, city, phone, email, is_admin, is_distributor) VALUES ?,?,?,?,?,?,?,?");
+        $stmt = $this->connect()->prepare("INSERT INTO User(name, company, adress, city, phone, email, is_admin, is_distributor) VALUES (?,?,?,?,?,?,?,?)");
 
         //execute statement for insering user values 
-        if($stmt->execute([$this->name, $this->company, $this->adress, $this->phone, $this->email, $admin, $distributer])){
+        if($stmt->execute([$this->name, $this->company, $this->adress, $this->city, $this->phone, $this->email, $admin, $distributer])){
             $stmt = null;
             return true;
         }else{
@@ -111,8 +111,39 @@ class User extends Dbh {
     }
 
 
+    public function AddUser(){
+        $errors = 
+            [
+                'empty' => "",
+                'name' => "",
+                'company' => "",
+                'adress' => "",
+                'city' => "",
+                'email' => "",
 
+            ];
 
+            if(!$this->checkEmty()){
+                $errors['empty'] = "Всички полета трябва да бъдат попълнени";
+            }
+            if($this->validateName() != ""){
+                $errors['name'] = $this->validateName();
+            }
+            if($this->validateCompany() != ""){
+                $errors['company'] = $this->validateCompany();
+            }
+            if($this->validateCity() != ""){
+                $errors['city'] = $this->validateCity();
+            }
+            if($this->validateEmail() != ""){
+                $errors['emal'] = $this->validateEmail();
+            }
 
+            if($errors['empty'] == "" && $errors['name'] == "" && $errors['company'] == "" && $errors['city'] == "" && $errors['city'] == ""){
+                $this->signUser();
+            }else{
+                return $errors;
+            }
+    }
 
 }
