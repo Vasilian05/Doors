@@ -15,10 +15,13 @@ if(isset($_POST['submit'])){
 
    
     $user = new User();
-    $user->setRegisterDetails($name, $company, $city, $adress, $email, $phone, $user_type);
+    $user->setRegisterDetails($name, $company, $adress, $city, $phone, $email, $user_type);
+
+    //if the user type is admin set a password
     if($user_type == "admin"){
         $user->setPass($pass);
     }
+
     if($user->AddUser() != ""){
         $errors = $user->AddUser();
     }

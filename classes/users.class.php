@@ -22,7 +22,7 @@ class User extends Dbh {
         $this->email=$email;
         $this->user_type=$user_type;
     }
-    
+
     public function setPass($pass){
         $this->pass=$pass;
     }
@@ -102,10 +102,10 @@ class User extends Dbh {
             $admin = 1;
         }
 
-        $stmt = $this->connect()->prepare("INSERT INTO User(name, company, adress, city, phone, email, is_admin, is_distributor) VALUES (?,?,?,?,?,?,?,?)");
+        $stmt = $this->connect()->prepare("INSERT INTO User(name, company, adress, city, phone, email, is_admin, is_distributor, pass) VALUES (?,?,?,?,?,?,?,?,?)");
 
         //execute statement for insering user values 
-        if($stmt->execute([$this->name, $this->company, $this->adress, $this->city, $this->phone, $this->email, $admin, $distributer])){
+        if($stmt->execute([$this->name, $this->company, $this->adress, $this->city, $this->phone, $this->email, $admin, $distributer, $this->pass])){
             $stmt = null;
             return true;
         }else{
@@ -114,6 +114,9 @@ class User extends Dbh {
         }
     }
 
+    private function hashPass(){
+        $this->pass = password_hash($this->pass, PASSWORD_BCRYPT);
+    }
 
     public function AddUser(){
         $errors = 
@@ -144,6 +147,7 @@ class User extends Dbh {
             }
 
             if($errors['empty'] == "" && $errors['name'] == "" && $errors['company'] == "" && $errors['city'] == "" && $errors['city'] == ""){
+                $this->hashPass();
                 $this->signUser();
             }else{
                 return $errors;
