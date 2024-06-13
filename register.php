@@ -1,6 +1,9 @@
 <?php include_once "includes/header.php"; 
 include_once "classes/users.class.php"; 
+include_once "classes/distributor.class.php"; 
 
+$distribution = new Distributor();
+$distribution = $distribution->getDistributors();
 if(isset($_POST['submit'])){
     
     //Posted values
@@ -26,6 +29,12 @@ if(isset($_POST['submit'])){
         $errors = $user->AddUser();
     }
     
+}
+
+if(isset($_['remove_distributor'])){
+    $user_id = $_POST['remove_distributor_id'];
+    $deleted_user = new Distributor();
+    $deleted_user->deleteDistributor($user_id);
 }
 
 ?>
@@ -81,7 +90,7 @@ if(isset($_POST['submit'])){
             </select>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Парола</label>
-        <input required type="password" name="pass" class="form-control <?php //echo $errors['email'] != '' ?  'is-invalid' :  "" ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input  type="password" name="pass" class="form-control <?php //echo $errors['email'] != '' ?  'is-invalid' :  "" ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
         <small class="mb-3">Задължително само за админ акаунти</small><br><br>
     <div class="invalid-feedback">
           <?php echo $errors['email']?>
@@ -90,38 +99,41 @@ if(isset($_POST['submit'])){
   <button type="submit" name="submit" class="btn btn-outline-dark">Създай акаунт</button>
 </form>
 
-<h3 class="m-5 text-center">Дистрибутори</h3>
-<table class="table table-striped w-75 m-auto">
-  <thead>
-    <tr>
-      <th scope="col">Фирма</th>
-      <th scope="col">Град</th>
-      <th scope="col">Адрес</th>
-      <th scope="col">Телефон</th>
-      <th scope="col">Имейл</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Hadezz Bulgaria</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<?php 
+if(count($distribution) > 0){ ?>
+
+    <h3 class="m-5 text-center">Дистрибутори</h3>
+    <table class="table table-striped w-75 m-auto">
+      <thead>
+        <tr>
+          <th scope="col">Фирма</th>
+          <th scope="col">Град</th>
+          <th scope="col">Адрес</th>
+          <th scope="col">Телефон</th>
+          <th scope="col">Имейл</th>
+          <th scope="col">Премахни</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php for($i = 0; $i < count($distribution); $i++) {
+            ?>
+        <tr>
+          <th scope="row"><?php echo $distribution[$i]['company']?></th>
+          <td><?php echo $distribution[$i]['city']?></td>
+          <td><?php echo $distribution[$i]['adress']?></td>
+          <td><?php echo $distribution[$i]['phone']?></td>
+          <td><?php echo $distribution[$i]['email']?></td>
+          <td>
+            <form method="POST">
+                <input type="hidden" name="remove_distributer_id" value="<?php $distribution[$i]['user_id']?>">
+                <button type="submit" name="remove_distributor" class="btn btn-outline-dark">Премахни</button>
+            </form>
+            
+          </td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+<?php }
+?>
 <?php include_once "includes/footer.php"; ?> 
