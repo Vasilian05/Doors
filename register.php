@@ -90,4 +90,38 @@ if(isset($_POST['submit'])){
   <button type="submit" name="submit" class="btn btn-outline-dark">Създай акаунт</button>
 </form>
 
+<h3 class="m-5 text-center">Дистрибутори</h3>
+<table class="table table-striped w-75 m-auto">
+  <thead>
+    <tr>
+      <th scope="col">Фирма</th>
+      <th scope="col">Град</th>
+      <th scope="col">Адрес</th>
+      <th scope="col">Телефон</th>
+      <th scope="col">Имейл</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Hadezz Bulgaria</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
 <?php include_once "includes/footer.php"; ?> 
