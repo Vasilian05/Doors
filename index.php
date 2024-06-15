@@ -17,73 +17,76 @@ $doors = $doors->getProducts(1);
     
     
 </head>
-<main>
-    <div class="container-fluid">
-
-        <div class="row">
-        <div class="main-intro col">
-            <h1 class="fs-1">Фабрика за врати <br>ArtDoors</h1>
-            <p>номер 1 пройзводител на интериорни и <br>входини врати за страната</p>
-            <button type="button" class="btn btn-outline-dark">Научи повече</button>
-        </div>
-        <div class="col">
-            <p>Страхотно отношение и много добро качество, <br> наистина впечатляващо <br><br> - Катя Николова </p>
-            <p>Да имаш милост към немилостивите е така подло, <br> както да я очакваш от тях... <br><br> - Иван Вазов </p>
-        </div>
-        </div>
-    </main>
+<div class="cintent">
+    <main>
+        <div class="container-fluid">
     
-    <section class="info">
-    
-        <div class="container-fluid text-center mt-5">
-            <div class="row align-items-start ">
-                <div class="col-md-8 order-md-1 ">
-                <h2>Кои сме ние?</h2>
-                <p class="mt-5 fs-4">Нашата компания е водещ производител на врати, предлагащ широка гама от висококачествени продукти за всеки вкус и стил. Съчетаваме изключителен дизайн със здрави материали и иновативни технологии, за да осигурим функционалност и елегантност. Нашите врати са изработени с внимание към детайла и се предлагат в разнообразие от цветове, размери и структури, което ги прави подходящи за всяко обитание или бизнес среда.</p>
-                </div>
-                <div class="col-md-4 order-md-0">
-                    <img src="images/blue-door-room-6toqsy.jpg" class="rounded w-100 float-end blue-door" alt="...">
+            <div class="row">
+            <div class="main-intro col">
+                <h1 class="fs-1">Фабрика за врати <br>ArtDoors</h1>
+                <p>номер 1 пройзводител на интериорни и <br>входини врати за страната</p>
+                <button type="button" class="btn btn-outline-dark">Научи повече</button>
+            </div>
+            <div class="col">
+                <p>Страхотно отношение и много добро качество, <br> наистина впечатляващо <br><br> - Катя Николова </p>
+                <p>Да имаш милост към немилостивите е така подло, <br> както да я очакваш от тях... <br><br> - Иван Вазов </p>
+            </div>
+            </div>
+        </main>
+        
+        <section class="info">
+        
+            <div class="container-fluid text-center mt-5">
+                <div class="row align-items-start ">
+                    <div class="col-md-8 order-md-1 ">
+                    <h2>Кои сме ние?</h2>
+                    <p class="mt-5 fs-4">Нашата компания е водещ производител на врати, предлагащ широка гама от висококачествени продукти за всеки вкус и стил. Съчетаваме изключителен дизайн със здрави материали и иновативни технологии, за да осигурим функционалност и елегантност. Нашите врати са изработени с внимание към детайла и се предлагат в разнообразие от цветове, размери и структури, което ги прави подходящи за всяко обитание или бизнес среда.</p>
+                    </div>
+                    <div class="col-md-4 order-md-0">
+                        <img src="images/blue-door-room-6toqsy.jpg" class="rounded w-100 float-end blue-door" alt="...">
+                    </div>
                 </div>
             </div>
-        </div>
+        
+        <hr>
+        </section>
     
-    <hr>
-    </section>
-
-    </div>    
+        </div>    
+        <!-- Slider main container -->
     <!-- Slider main container -->
-<!-- Slider main container -->
-<h2 class="text-center mt-5">Потопи се в разнообразието на нашите интериорни врати</h2>
-<div class="swiper">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-        <?php
-            for($i = 0; $i < count($doors); $i++){
-
-                ?>
-                <div class="swiper-slide">
-                    <div class="col mt-3">
-                    <div class="card m-auto" style="width: 18rem;">
-                    <img src="<?php echo $doors[$i]['image'] ?>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $doors[$i]['name'] ?></h5>
-                        <p class="card-text">Врата е масивна, с прости линии, без украса, създава впечатление за мистерия и непроницаемост.</p>
-                        <a href="#" class="btn btn-outline-dark">Виж повече</a>
+    <h2 class="text-center mt-5">Потопи се в разнообразието на нашите интериорни врати</h2>
+    <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <?php
+                for($i = 0; $i < count($doors); $i++){
+    
+                    ?>
+                    <div class="swiper-slide">
+                        <div class="col mt-3">
+                        <div class="card m-auto" style="width: 18rem;">
+                        <img src="<?php echo $doors[$i]['image'] ?>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $doors[$i]['name'] ?></h5>
+                            <p class="card-text">Врата е масивна, с прости линии, без украса, създава впечатление за мистерия и непроницаемост.</p>
+                            <a href="#" class="btn btn-outline-dark">Виж повече</a>
+                        </div>
+                        </div>
                     </div>
                     </div>
-                </div>
-                </div>
-                <?php
-            
-        }
-        ?>
+                    <?php
+                
+            }
+            ?>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
     </div>
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
 
-    <!-- If we need navigation buttons -->
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

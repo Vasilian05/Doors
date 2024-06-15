@@ -25,28 +25,30 @@ if ($category === 'interior') {
 }
 
 ?>
-
-<section class="products mt-5">
-    <div class="container-fluid text-center">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-            <?php foreach($data as $door): ?>
-                <div class="col mt-5">
-                    <div class="card m-auto w-75 border-0">
-                        <img src="<?php echo $door['image']; ?>" class="card-img-top img-fluid w-50 m-auto" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $door['name'] ?></h5>
-                            <p>Моделът се предлага в следните цветове: Орех
-                                Размери: 620 <br>
-                                Комплекта включва крило, каса, первази, уплътнение, брава, панти
-                                В наличност.</p>
-                            <a href="product.php?category=<?php echo $category; ?>&id=<?php echo isset($door['door_id']) ? $door["door_id"] :  $door["facing_id"]; ?>" class="btn btn-outline-dark">Виж повече</a>
+<div class="content">
+    <section class="products mt-5">
+        <div class="container-fluid text-center">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+                <?php foreach($data as $door): ?>
+                    <div class="col mt-5">
+                        <div class="card m-auto w-75 border-0">
+                            <img src="<?php echo $door['image']; ?>" class="card-img-top img-fluid w-50 m-auto" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo $door['name'] ?></h5>
+                                <p>Моделът се предлага в следните цветове: Орех
+                                    Размери: 620 <br>
+                                    Комплекта включва крило, каса, первази, уплътнение, брава, панти
+                                    В наличност.</p>
+                                <a href="product.php?category=<?php echo $category; ?>&id=<?php echo isset($door['door_id']) ? $door["door_id"] :  $door["facing_id"]; ?>" class="btn btn-outline-dark">Виж повече</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+</div>
 
 <?php 
 if(isset($_GET['door_id'])){
