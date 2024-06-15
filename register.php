@@ -4,9 +4,13 @@ include_once "classes/distributor.class.php";
 
 $distribution = new Distributor();
 $distribution = $distribution->getDistributors();
+
+//make sure only admins can access the page 
 if($_SESSION['user_type'] != "admin"){
     header("location:index.php");
 }
+
+
 if(isset($_POST['submit'])){
     
     //Posted values

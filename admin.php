@@ -2,6 +2,11 @@
 include_once "classes/products.class.php";
 include_once "classes/doors.class.php";
 
+//make sure only admins can access the page
+if($_SESSION['user_type'] != "admin"){
+    header("location:index.php");
+}
+
 if(isset($_POST['btn'])){
     $name = $_POST['name'];
     $description = $_POST['description'];
