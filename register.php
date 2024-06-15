@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
     
 }
 
-if(isset($_['remove_distributor'])){
+if(isset($_POST['remove_distributor'])){
     $user_id = $_POST['remove_distributor_id'];
     $deleted_user = new Distributor();
     $deleted_user->deleteDistributor($user_id);
@@ -125,7 +125,7 @@ if(isset($_['remove_distributor'])){
               <td><?php echo $distribution[$i]['email']?></td>
               <td>
                 <form method="POST">
-                    <input type="hidden" name="remove_distributer_id" value="<?php $distribution[$i]['user_id']?>">
+                    <input type="hidden" name="remove_distributor_id" value="<?php echo $distribution[$i]['user_id']?>">
                     <button type="submit" name="remove_distributor" class="btn btn-outline-dark">Премахни</button>
                 </form>
                 
