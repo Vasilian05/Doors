@@ -36,6 +36,9 @@
             <li><a class="dropdown-item" href="products.php?category=facing">Облицовки</a></li>
           </ul>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Дистрибутори</a>
+        </li>
       </ul>
       <?php if($_SESSION['user_type'] == "admin"){?>
         <form method="POST" class="ms-auto">
