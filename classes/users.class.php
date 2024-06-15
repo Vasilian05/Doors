@@ -158,7 +158,7 @@ class User extends Dbh {
     //Login 
     private function loginEmail(){
         
-        $stmt = $this->connect()->prepare('SELECT * FROM User WHERE user_type = 1 AND email = ?');
+        $stmt = $this->connect()->prepare('SELECT * FROM User WHERE is_admin = 1 AND email = ?');
 
         if($stmt->execute([$this->email])){
             
@@ -179,16 +179,18 @@ class User extends Dbh {
         if(count($user) >= 1){
             if(password_verify($this->pass, $user[0]['pass'])){
                 $_SESSION['user_id'] = $user[0]['user_id'];
-                $_SESSION['user_type'] = $user[0]['user_type'];
+                $_SESSION['user_type'] = "admin";
                 setcookie('is_logged_in', '1', time() + (86400 * 30), "/"); // 86400 = 1 day
                 header('location:index.php');
                 return $user[0];
                 
             }else {
-                $error = 'Incorrect password';
-                return $error;
+                
+                return false;
             }
 
+        }else{
+            return false;
         }
     }
 
