@@ -37,11 +37,39 @@
           </ul>
         </li>
       </ul>
+      <?php if($_SESSION['user_type'] == "admin"){?>
+        <form method="POST" class="ms-auto">
+          <button name="admin-menu" class="btn btn-outline-dark  ">Меню</button>
+        </form>
+        <?php } ?>
     </div>
 </nav>
 
+<?php 
+if($_SESSION['user_type'] == "admin"){
+?>
+<div class="offcanvas offcanvas-start <?php if(isset($_POST["admin-menu"])){echo "show";} ?>" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Админ панел</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+  <ul class="list-group">
+  <li class="list-group-item"><a href="admin.php">Админ страница</a></li>
+  <li class="list-group-item"><a href="register.php">Дистрибутори</a></li>
+</ul>
+  </div>
+</div>
+<?php
+}
+?>
 <style>
-  
+  a {
+  color: black;
+  text-decoration: none;
+ }
+
+ a:active {
+  text-decoration: underline;
+ }
 </style>
-
-

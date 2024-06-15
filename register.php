@@ -46,6 +46,7 @@ if(isset($_POST['remove_distributor'])){
 
 ?>
 <div class="content">
+    
     <h1 class="text-center mt-5">Добавяне на партнюри</h1>
     
     <form method="POST" class="w-50 m-auto">

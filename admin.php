@@ -39,6 +39,7 @@ if(isset($_POST['remove_facing'])){
     $facing = $doors->getFacing();
 ?>
 <div class="content">
+
     <form method="POST" class="form m-auto w-50 mt-5" enctype="multipart/form-data">
         <h1 class="text-center">Добави продукт</h1>
             <div class="mb-3">
