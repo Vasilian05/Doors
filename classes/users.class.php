@@ -143,10 +143,10 @@ class User extends Dbh {
                 $errors['city'] = $this->validateCity();
             }
             if($this->validateEmail() != ""){
-                $errors['emal'] = $this->validateEmail();
+                $errors['email'] = $this->validateEmail();
             }
 
-            if($errors['empty'] == "" && $errors['name'] == "" && $errors['company'] == "" && $errors['city'] == "" && $errors['city'] == ""){
+            if($errors['empty'] == "" && $errors['name'] == "" && $errors['company'] == "" && $errors['city'] == "" && $errors['city'] == "" && $errors['email'] == ""){
                 $this->hashPass();
                 $this->signUser();
             }else{
