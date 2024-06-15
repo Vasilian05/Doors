@@ -154,4 +154,42 @@ class User extends Dbh {
             }
     }
 
+
+    //Login 
+    private function loginEmail(){
+        
+        $stmt = $this->connect()->prepare('SELECT * FROM User WHERE user_type = 1 AND email = ?');
+
+        if($stmt->execute([$this->email])){
+            
+            //email exists return the row 
+            return $stmt->fetchAll();
+            
+        }else {
+            //email doesn't exist -> exit script 
+            $stmt = null;
+            exit();
+        }
+    }
+    
+    //check for matching password
+    public function checkLogin(){
+    
+        $user = $this->loginEmail();
+        if(count($user) >= 1){
+            if(password_verify($this->pass, $user[0]['pass'])){
+                $_SESSION['user_id'] = $user[0]['user_id'];
+                $_SESSION['user_type'] = $user[0]['user_type'];
+                setcookie('is_logged_in', '1', time() + (86400 * 30), "/"); // 86400 = 1 day
+                header('location:index.php');
+                return $user[0];
+                
+            }else {
+                $error = 'Incorrect password';
+                return $error;
+            }
+
+        }
+    }
+
 }

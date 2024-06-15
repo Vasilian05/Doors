@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="CSS/styles.css"/>
 </head>
 <body>
-    
+    <?php session_start(); ?>
 <nav class=" navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">ArtDoors</a>
