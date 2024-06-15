@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
     $name = $_POST['name'];
     $company = $_POST['company'];
     $city = $_POST['city'];
-    $adress = $_POST['adress'];
+    $address = $_POST['address'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $user_type = $_POST['user_type'];
@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
 
    
     $user = new User();
-    $user->setRegisterDetails($name, $company, $adress, $city, $phone, $email, $user_type);
+    $user->setRegisterDetails($name, $company, $address, $city, $phone, $email, $user_type);
 
     //if the user type is admin set a password
     if($user_type == "admin"){
@@ -65,9 +65,9 @@ if(isset($_['remove_distributor'])){
   </div>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Адрес</label>
-    <input required type="text" name="adress" class="form-control <?php echo $errors['adress'] != '' ?  'is-invalid' :  "" ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input required type="text" name="address" class="form-control <?php echo $errors['address'] != '' ?  'is-invalid' :  "" ?>" id="exampleInputEmail1" aria-describedby="emailHelp">
     <div class="invalid-feedback">
-          <?php echo $errors['adress']?>
+          <?php echo $errors['address']?>
     </div>
   </div>
   <div class="mb-3">
@@ -120,7 +120,7 @@ if(count($distribution) > 0){ ?>
         <tr>
           <th scope="row"><?php echo $distribution[$i]['company']?></th>
           <td><?php echo $distribution[$i]['city']?></td>
-          <td><?php echo $distribution[$i]['adress']?></td>
+          <td><?php echo $distribution[$i]['address']?></td>
           <td><?php echo $distribution[$i]['phone']?></td>
           <td><?php echo $distribution[$i]['email']?></td>
           <td>

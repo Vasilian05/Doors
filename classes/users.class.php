@@ -5,7 +5,7 @@ class User extends Dbh {
 
     private $name;
     private $company;
-    private $adress;
+    private $address;
     private $city;
     private $phone;
     private $email;
@@ -13,10 +13,10 @@ class User extends Dbh {
     private $user_type;
 
     //Setters 
-    public function setRegisterDetails($name, $company, $adress, $city, $phone, $email, $user_type){
+    public function setRegisterDetails($name, $company, $address, $city, $phone, $email, $user_type){
         $this->name=$name;
         $this->company=$company;
-        $this->adress=$adress;
+        $this->address=$address;
         $this->city=$city;
         $this->phone=$phone;
         $this->email=$email;
@@ -34,7 +34,7 @@ class User extends Dbh {
     }
 
     private function checkEmty(){// make sure fields are not empty
-        if($this->name == "" || $this->company == "" || $this->adress == "" || $this->city == "" || $this->phone == "" || $this->email = "" || $this->user_type == ""){
+        if($this->name == "" || $this->company == "" || $this->address == "" || $this->city == "" || $this->phone == "" || $this->email == "" || $this->user_type == ""){
             return false;
         }else{
             return true;
@@ -86,6 +86,7 @@ class User extends Dbh {
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $error_message = "Невалиден имейл формат";
           }
+          
         return $error_message;
     }
 
@@ -101,11 +102,10 @@ class User extends Dbh {
             $distributer = 0;
             $admin = 1;
         }
-
-        $stmt = $this->connect()->prepare("INSERT INTO User(name, company, adress, city, phone, email, is_admin, is_distributor, pass) VALUES (?,?,?,?,?,?,?,?,?)");
+        $stmt = $this->connect()->prepare("INSERT INTO User(name, company, address, city, phone, email, is_admin, is_distributor, pass) VALUES (?,?,?,?,?,?,?,?,?)");
 
         //execute statement for insering user values 
-        if($stmt->execute([$this->name, $this->company, $this->adress, $this->city, $this->phone, $this->email, $admin, $distributer, $this->pass])){
+        if($stmt->execute([$this->name, $this->company, $this->address, $this->city, $this->phone, $this->email, $admin, $distributer, $this->pass])){
             $stmt = null;
             return true;
         }else{
@@ -124,7 +124,7 @@ class User extends Dbh {
                 'empty' => "",
                 'name' => "",
                 'company' => "",
-                'adress' => "",
+                'address' => "",
                 'city' => "",
                 'email' => "",
 
