@@ -37,7 +37,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Дистрибутори</a>
+          <a class="nav-link" href="distributors.php">Дистрибутори</a>
         </li>
       </ul>
       <?php if(isset($_SESSION['user_type'])){
