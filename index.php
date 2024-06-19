@@ -67,9 +67,9 @@ $doors = $doors->getProducts(1);
                         <div class="card m-auto w-75 border-0" style="width: 18rem;">
                         <img src="<?php echo $doors[$i]['image'] ?>" class="card-img-top w-50 m-auto" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $doors[$i]['name'] ?></h5>
+                            <h5 class="card-title"><?php echo $doors[$i]['name']?></h5>
                             <p class="card-text">Врата е масивна, с прости линии, без украса, създава впечатление за мистерия и непроницаемост.</p>
-                            <a href="#" class="btn btn-outline-dark">Виж повече</a>
+                            <a href="product.php?&id=<?php echo $doors[$i]['door_id']; ?>" class="btn btn-outline-dark">Виж повече</a>
                         </div>
                         </div>
                     </div>

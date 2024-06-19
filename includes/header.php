@@ -40,15 +40,17 @@
           <a class="nav-link" href="#">Дистрибутори</a>
         </li>
       </ul>
-      <?php if($_SESSION['user_type'] == "admin"){?>
+      <?php if(isset($_SESSION['user_type'])){
+        if($_SESSION['user_type'] == "admin"){?>
         <form method="POST" class="ms-auto">
           <button name="admin-menu" class="btn btn-outline-dark  ">Меню</button>
         </form>
-        <?php } ?>
+        <?php } } ?>
     </div>
 </nav>
 
 <?php 
+if(isset($_SESSION['user_type'])){
 if($_SESSION['user_type'] == "admin"){
 ?>
 <div class="offcanvas offcanvas-start <?php if(isset($_POST["admin-menu"])){echo "show";} ?>" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
@@ -64,7 +66,7 @@ if($_SESSION['user_type'] == "admin"){
   </div>
 </div>
 <?php
-}
+} }
 ?>
 <style>
   a {
