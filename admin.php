@@ -51,6 +51,10 @@ if(isset($_POST['remove_facing'])){
               <input required type="text" class="form-control" name="description">
             </div>
             <div class="mb-3">
+              <label class="form-label">Кратко oписание</label>
+              <input required type="text" class="form-control" name="description">
+            </div>
+            <div class="mb-3">
             <label class="form-label">Категория</label>
                 <select required name="category" class="form-select" aria-label="Default select example">
                 <option selected value=''>Категория</option>
