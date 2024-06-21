@@ -7,19 +7,21 @@ class Product extends Dbh {
     private $category;
     private $description;
     private $image;
+    private $short_description;
     private $allowedExtensions = array('jpg', 'jpeg', 'png', 'WEBP');
     private $maxFileSize = 500000; // 500KB
 
-    public function __construct($name, $category, $description, $image){
+    public function __construct($name, $category, $description, $image, $short_description){
         $this->name=$name;
         $this->category=$category;
         $this->description=$description;
         $this->image=$image;
+        $this->short_description=$short_description;
 
     }
 
     private function checkEmpty(){
-        if($this->name == "" || $this->category == "" || $this->description == ""){
+        if($this->name == "" || $this->category == "" || $this->description == "" || $this->short_description == ""){
             return "Всички полета трябва да бъдат попълнени";
         }
     }
@@ -82,17 +84,17 @@ class Product extends Dbh {
 
         if($this->category != "facing"){
 
-            $stmt = $this->connect()->prepare('INSERT INTO Door(category_id, name, description, image) VALUES(?, ?, ?, ?)');
+            $stmt = $this->connect()->prepare('INSERT INTO Door(category_id, name, description, image, short_description) VALUES(?, ?, ?, ?, ?)');
             
-            if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path])){
+            if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path, $this->short_description])){
                 echo "Продуктът е качен успешно!";
             }else{
                 echo "Продуктът не е качен";
             }
         }else {
-            $stmt = $this->connect()->prepare('INSERT INTO Facing(category_id, name, description, image) VALUES(?, ?, ?, ?)');
+            $stmt = $this->connect()->prepare('INSERT INTO Facing(category_id, name, description, image, short_description) VALUES(?, ?, ?, ?)');
             
-            if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path])){
+            if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path, $this->short_description])){
                 echo "Продуктът е качен успешно!";
             }else{
                 echo "Продуктът не е качен";

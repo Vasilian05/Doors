@@ -12,7 +12,8 @@ if(isset($_POST['btn'])){
     $description = $_POST['description'];
     $category = $_POST['category'];
     $image = $_FILES['image'];
-    $item = new Product($name, $category, $description, $_FILES["image"]);
+    $short_description = $_POST['short_description'];
+    $item = new Product($name, $category, $description, $_FILES["image"], $short_description);
 
     $item->addItem();
 }
@@ -52,7 +53,7 @@ if(isset($_POST['remove_facing'])){
             </div>
             <div class="mb-3">
               <label class="form-label">Кратко oписание</label>
-              <input required type="text" class="form-control" name="description">
+              <input required type="text" class="form-control" name="short_description">
             </div>
             <div class="mb-3">
             <label class="form-label">Категория</label>
