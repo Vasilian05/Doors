@@ -49,11 +49,11 @@ if(isset($_POST['remove_facing'])){
             </div>
             <div class="mb-3">
               <label class="form-label">Описание</label>
-              <input required type="text" class="form-control" name="description">
+              <textarea required type="text" class="form-control"  name="description"></textarea>
             </div>
             <div class="mb-3">
               <label class="form-label">Кратко oписание</label>
-              <input required type="text" class="form-control" name="short_description">
+              <textarea required type="text" id="tiny" class="form-control" name="short_description"></textarea>
             </div>
             <div class="mb-3">
             <label class="form-label">Категория</label>
@@ -160,6 +160,6 @@ if(isset($_POST['remove_facing'])){
 
 </div>
 <?php } ?>
-
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
       </section>
 <?php include_once "includes/footer.php";?>
