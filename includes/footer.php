@@ -73,7 +73,7 @@
         margin-right: 25px;
       }
       .content {
-        min-height: 70vh;
+        min-height: 90vh;
       }
       a:hover {
         color: black;
