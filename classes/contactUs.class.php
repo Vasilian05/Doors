@@ -1,10 +1,14 @@
 <?php 
+include_once 'classes/validation.trait.php';
 
 class Form {
     private $name;
     private $email;
     private $about;
     private $message;
+
+    //use trait 
+    use Validation;
 
     public function __construct($name, $email, $about, $message)
     {
