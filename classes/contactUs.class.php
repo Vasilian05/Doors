@@ -4,18 +4,18 @@ include_once 'classes/validation.trait.php';
 class Form {
     private $name;
     private $email;
-    private $about;
+    private $subject;
     private $message;
     
 
     //use trait 
     use Validation;
 
-    public function __construct($name, $email, $about, $message)
+    public function __construct($name, $email, $subject, $message)
     {
         $this->name=$name;
         $this->email=$email;
-        $this->about=$about;
+        $this->subject=$subject;
         $this->message=$message;
     }
 
@@ -24,7 +24,7 @@ class Form {
         $headers = "From: ".$this->name;
         $txt = "Получихте имейл от ".$this->name.".\n\n".$this->message;
 
-        mail($mailTo, $this->about, $txt, $headers);
+        mail($mailTo, $this->subject, $txt, $headers);
     }
 
 }

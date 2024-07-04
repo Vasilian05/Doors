@@ -1,4 +1,33 @@
-<?php include_once 'includes/header.php'; ?>
+<?php include_once 'includes/header.php'; 
+include_once 'classes/contactUs.class.php';
+
+if(isset($_POST['send_form'])){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+    
+    $sendEmail = new Form($name, $email, $subject, $message);
+    $error_messages = 
+    [
+        'email' => '',
+        'name' => ''
+    ];
+    if($sendEmail->validateName($name) != ''){
+        $error_messages['name'] = "Полето Име не може да съдържа символи или цифри.";
+        echo 123123123;
+    }
+    if($sendEmail->validateEmail($email) != ''){
+        $error_messages['email'] = "Моля въведете валиден имейл адрес.";
+        echo 12321;
+    }
+
+    if($error_messages['name'] == '' && $error_messages['email'] == ''){
+        $sendEmail->sendMail();
+    }
+}
+
+?>
 
 <div class="content">
     <h1 class="text-center mt-5">Контакти</h1>
@@ -6,26 +35,31 @@
     <div class="row mt-5">
         <div class="col">
             <h3 class="text-center">Свържете се с нас</h3>
-            <form class="w-50 m-auto">
+            <form class="w-50 m-auto" method="POST">
                 <div class="mb-3">
                     <label  class="form-label">Име</label>
-                    <input required type="text" class="form-control">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <input required name="name" type="text" class="form-control <?php echo $error_messages['name'] != '' ?  'is-invalid' :  "" ?>">
+                    <div class="invalid-feedback">
+                        <?php echo $error_messages['name']?>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label required for="exampleInputPassword1" class="form-label">Имейл</label>
-                    <input required type="email" class="form-control" id="exampleInputPassword1">
+                    <input required type="email" name="email" class="form-control <?php echo $error_messages['email'] = '' ?  'is-invalid' :  "" ?>">
+                    <div class="invalid-feedback">
+                        <?php echo $error_messages['email']?>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label required for="exampleInputPassword1" class="form-label">Относно</label>
-                    <input required type="text" class="form-control" id="exampleInputPassword1">
+                    <input required type="text" name="subject" class="form-control" id="exampleInputPassword1">
                 </div>
                 <div class="mb-3">
                     <labelfor="exampleInputPassword1" class="form-label">Съобщение</label>
-                    <textarea required name="about" class="form-control"></textarea>
+                    <textarea required name="message" class="form-control"></textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-outline-dark">Изпрати</button>
+                <button type="submit" name="send_form"class="btn btn-outline-dark">Изпрати</button>
             </form>
         </div>
         <div class="col">

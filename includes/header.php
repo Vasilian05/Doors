@@ -39,6 +39,9 @@
         <li class="nav-item">
           <a class="nav-link" href="distributors.php">Дистрибутори</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contacts.php">Контакти</a>
+        </li>
       </ul>
       <?php if(isset($_SESSION['user_type'])){
         if($_SESSION['user_type'] == "admin"){?>
