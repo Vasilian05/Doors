@@ -21,7 +21,7 @@ $door_data = $door->getDoor($door_id);
           <h2><?php echo $door_data[0]['name'] ?></h2>
           <p><?php echo nl2br($door_data[0]['description']);?></p>
           
-          <a href="#" class="btn btn-outline-dark">Свържи се с нас</a>
+          <a href="contacts.php" class="btn btn-outline-dark">Свържи се с нас</a>
         </div>
       </div>
     </div>

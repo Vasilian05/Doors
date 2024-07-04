@@ -70,7 +70,7 @@ if(isset($_POST['send_form'])){
         </div>
   </div>
   <div class="row mt-5">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <table class="table w-75 m-auto">
             <thead>
                 <tr>
@@ -120,7 +120,7 @@ if(isset($_POST['send_form'])){
             </tbody>
         </table>
     </div>
-    <div class="col-6">
+    <div class="col-12 col-md-6">
         <div class="row mt-5">
                 <div class="col-3 justify-content-end">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-telephone ms-5" viewBox="0 0 16 16">

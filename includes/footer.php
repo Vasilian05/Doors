@@ -7,12 +7,10 @@
     <div class="container">
       <footer class="py-5">
         <div class="row">
-          <div class="col-12 col-md-4 col-lg-2 mb-3">
+          <div class="col-12 col-md-4 col-lg-4 mb-3">
             <ul class="nav flex-column">
               <h3>Art Decor Doors</h3>
-              <p class="text-muted">Бул. Христо Смирненски 147
-              Варна, BG 9000
-              България
+              <p class="text-muted">Складова Зона Връбница, ул. Лазарица, 1231 София
               <br><br>
               Тел: +359 88 274 3866
               Email: artdecordoors@gmail.com</p>
@@ -39,7 +37,7 @@
             </ul>
           </div>
 
-          <div class="col-12 col-md-12 col-lg-6 mb-3">
+          <div class="col-12 col-md-12 col-lg-4 mb-3">
             <form>
               <h5>Последвайте ни в социалните мрежи</h5>
               <ul class="list-unstyled d-flex">
@@ -53,12 +51,12 @@
               </div>
             </form>
           </div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+            <p>Art Decor Doors © 2024 Company, Inc. All rights reserved.</p>
+            
+          </div>
         </div>
 
-        <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-          <p>Art Decor Doors © 2024 Company, Inc. All rights reserved.</p>
-          
-        </div>
       </footer>
     </div>
 
