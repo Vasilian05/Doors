@@ -12,6 +12,9 @@ class User extends Dbh {
     private $pass;
     private $user_type;
 
+    //Using trait
+    use Validation;
+    
     //Setters 
     public function setRegisterDetails($name, $company, $address, $city, $phone, $email, $user_type){
         $this->name=$name;
