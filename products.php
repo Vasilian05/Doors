@@ -35,10 +35,7 @@ if ($category === 'interior') {
                             <img src="<?php echo $door['image']; ?>" class="card-img-top img-fluid w-50 m-auto" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $door['name'] ?></h5>
-                                <p>Моделът се предлага в следните цветове: Орех
-                                    Размери: 620 <br>
-                                    Комплекта включва крило, каса, первази, уплътнение, брава, панти
-                                    В наличност.</p>
+                                <p><?php echo $door['short_description']?></p>
                                 <a href="product.php?category=<?php echo $category; ?>&id=<?php echo isset($door['door_id']) ? $door["door_id"] :  $door["facing_id"]; ?>" class="btn btn-outline-dark">Виж повече</a>
                             </div>
                         </div>
