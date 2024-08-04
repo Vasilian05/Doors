@@ -3,7 +3,7 @@
 class Dbh {
 
     private $host = 'localhost';
-    private $db = 'artDoors';
+    private $db = 'ArtDoors';
     private $user = 'root';
     private $pass = '';
     
