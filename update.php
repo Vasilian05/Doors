@@ -1,11 +1,18 @@
 <?php include_once "includes/header.php"; 
 include_once "classes/products.class.php";
+include_once "classes/doors.class.php";
 include_once "classes/users.class.php"; 
 ?>
 <?php
 if($_SESSION['user_type'] != "admin"){
     header("location:index.php");
 }
+
+// get the door to be edited
+$door_id = 40;
+$doors = new Doors();
+$edited_product = $doors->getDoor($door_id); // change later on to id from session (coming from admin page)
+echo $edited_product[0]['name'];
 ?>
 <div class="content">
 
