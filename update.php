@@ -8,8 +8,12 @@ if($_SESSION['user_type'] != "admin"){
     header("location:index.php");
 }
 
+if(isset($_SESSION['Door_id'])){
+    $door_id = $_SESSION['Door_id'];
+}
+
 // get the door to be edited
-$door_id = 23;
+;
 $doors = new Doors();
 $edited_product = $doors->getDoor($door_id); // change later on to id from session (coming from admin page)
 
@@ -35,15 +39,15 @@ if(isset($_POST['update'])){
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Цена</label>   
-              <input required type="text" class="form-control" name="price" value="<?php echo $edited_product[0]['price']; ?>">
+              <input required type="text" class="form-control"  name="price" value="<?php echo $edited_product[0]['price']; ?>">
             </div>
             <div class="mb-3">
               <label class="form-label">Описание</label>
-              <textarea required type="text" class="form-control"  name="description"><?php echo $edited_product[0]['description']; ?></textarea>
+              <textarea required type="text" class="form-control" rows='15'  name="description"><?php echo $edited_product[0]['description']; ?></textarea>
             </div>
             <div class="mb-3">
               <label class="form-label">Кратко oписание</label>
-              <textarea required type="text" id="tiny" class="form-control" name="short_description"><?php echo $edited_product[0]['short_description']; ?></textarea>
+              <textarea required type="text" id="tiny" rows ='5' class="form-control" name="short_description"><?php echo $edited_product[0]['short_description']; ?></textarea>
             </div>
             <div class="mb-3">
             <label class="form-label">Категория</label>
