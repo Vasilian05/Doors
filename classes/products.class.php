@@ -4,6 +4,7 @@ class Product extends Dbh {
 
    
     private $name;
+    private $price;
     private $category;
     private $description;
     private $image;
@@ -138,5 +139,21 @@ class Product extends Dbh {
         }
     }
 
-    
+    public function editDoor($id, $price){
+
+        //get door from db
+        $stmt = $this->connect()->prepare("UPDATE Door SET name = ?, price = ?, description = ?, category_id = ?, short_description =? WHERE door_id = ?");
+        if($stmt->execute([$this->name, $price, $this->description, $this->getCategory(), $this->short_description, $id])){
+            
+            echo $_SERVER['PHP_SELF'];
+            echo "Продуктът е редактиран успешно";
+        }else{
+            //return false if statement fails
+            $stmt = null;
+            echo "Възникна грешка, моля опитайте по-късно.";
+            return false;
+        }
+
+    }
+
 }
