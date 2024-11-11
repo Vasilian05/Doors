@@ -2,6 +2,7 @@
 include_once "classes/products.class.php";
 include_once "classes/doors.class.php";
 
+
 //make sure only admins can access the page
 if($_SESSION['user_type'] != "admin"){
     header("location:index.php");
@@ -32,6 +33,12 @@ if(isset($_POST['remove_facing'])){
     $delete_product = new Doors();
     $delete_product->deleteFacing($product_id);
   
+}
+echo 1;
+//edit item 
+if(isset($_POST['edit'])){
+ header('location:update.php');
+ $_SESSION['Door_id'] = $_POST['product_id'];
 }
     //getting all items from database
     $doors = new Doors();
@@ -83,6 +90,7 @@ if(isset($_POST['remove_facing'])){
           <th scope="col">Снимка</th>
           <th scope="col">Категория</th>
           <th scope="col">Премахни</th>
+          <th scope="col">Редактирай</th>
         </tr>
       </thead>
       <tbody>
@@ -95,6 +103,13 @@ if(isset($_POST['remove_facing'])){
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" method="POST">
                 <input type="hidden" value="<?php echo $interior[$i]['door_id']?>"  name="product"></input>
                 <button name="remove" class="btn btn-outline-dark">премахни</button>
+            </form>
+          </td>
+          <td>
+            <!-- Add an edit button here -->
+            <form action="" method="POST">
+                <input type="hidden" value="<?php echo $interior[$i]['door_id']?>" name="product_id">
+                <button name="edit" class="btn btn-outline-dark">редактирай</button>
             </form>
           </td>
         </tr>
