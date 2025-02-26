@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($pageTitle) ? $pageTitle : 'Интериорни и Входни врати'; ?></title>
+    <title><?php echo isset($page_title) ? $page_title : 'Интериорни и Входни врати'; ?></title>
     <meta name="description" content="<?php echo isset($meta_description) ? $meta_description : 'Входни и интериорни врати АртДекорДоор. Потопете се в нашето разнообразие от врати, които ще подновят вашия интериор.'; ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
