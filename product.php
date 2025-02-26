@@ -2,13 +2,15 @@
 include_once 'includes/header.php'; 
 include_once 'classes/doors.class.php';
 
+
+
 $door_id = isset($_GET['id']) ? $_GET['id'] : '';
 $category = isset($_GET['category']) ? $_GET['category'] : '';
 
 $door = new Doors();
 $door_data = $door->getDoor($door_id);
-
-
+$page_title =  $door_data[0]['page_title'];
+$meta_description =  $door_data[0]['meta_description'];
 ?>
 <div class="conent">
     <div class="container-fluid">
