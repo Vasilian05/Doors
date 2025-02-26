@@ -19,6 +19,7 @@ $door_data = $door->getDoor($door_id);
         </div>
         <div class="col-lg-8 col-md-6">
           <h2><?php echo $door_data[0]['name'] ?></h2>
+          <h4><?php echo $door_data[0]['price']?>лв</h4> 
           <p><?php echo nl2br($door_data[0]['description']);?></p>
           
           <a href="contacts.php" class="btn btn-outline-dark">Свържи се с нас</a>
