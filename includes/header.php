@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="CSS/styles.css"/>
 </head>
 <body>
-    <?php session_start(); ?>
+    <?php session_start(); 
+    ?>
 <nav class=" navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">ArtDoors</a>
@@ -66,6 +67,7 @@ if($_SESSION['user_type'] == "admin"){
   <ul class="list-group">
   <li class="list-group-item"><a href="admin.php">Админ страница</a></li>
   <li class="list-group-item"><a href="register.php">Дистрибутори</a></li>
+
 </ul>
   </div>
 </div>

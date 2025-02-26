@@ -1,5 +1,4 @@
 <?php 
-include_once 'includes/header.php'; 
 include_once 'classes/doors.class.php';
 
 
@@ -9,8 +8,14 @@ $category = isset($_GET['category']) ? $_GET['category'] : '';
 
 $door = new Doors();
 $door_data = $door->getDoor($door_id);
+
+//fetch the meta data
 $page_title =  $door_data[0]['page_title'];
 $meta_description =  $door_data[0]['meta_description'];
+
+//include the header once the metadata fields are set
+include_once 'includes/header.php'; 
+
 ?>
 <div class="conent">
     <div class="container-fluid">
