@@ -27,13 +27,7 @@ if(isset($_POST['remove'])){
   
 }
 
-//deleting facings from database
-if(isset($_POST['remove_facing'])){
-    $product_id = $_POST['product'];
-    $delete_product = new Doors();
-    $delete_product->deleteFacing($product_id);
-  
-}
+
 //edit item 
 if(isset($_POST['edit'])){
  header('location:update.php');
@@ -43,7 +37,6 @@ if(isset($_POST['edit'])){
     $doors = new Doors();
     $interior = $doors->getProducts(1);
     $exterior = $doors->getProducts(2);
-    $facing = $doors->getFacing();
 ?>
 <div class="content">
 
