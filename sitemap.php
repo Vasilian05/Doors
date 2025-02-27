@@ -7,7 +7,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <?php
-   // Example: manually defined URLs (you can also fetch these from your database)
+   
+   //in the future save the urls in db and loop them trough
    $urls = [
        [
            'loc' => 'https://artdecordoors.com/index.php',

@@ -34,7 +34,6 @@ if(isset($_POST['remove_facing'])){
     $delete_product->deleteFacing($product_id);
   
 }
-echo 1;
 //edit item 
 if(isset($_POST['edit'])){
  header('location:update.php');
@@ -118,7 +117,7 @@ if(isset($_POST['edit'])){
     </table>
     <?php } ?>
     <?php if(count($exterior) > 0) { ?>
-            <h5 class="text-center mt-5">Екстериорни</h5>
+            <h5 class="text-center mt-5">Входни</h5>
           <table class="table w-75 m-auto">
       <thead>
         <tr>
@@ -126,6 +125,7 @@ if(isset($_POST['edit'])){
           <th scope="col">Снимка</th>
           <th scope="col">Категория</th>
           <th scope="col">Премахни</th>
+          <th scope="col">Редактирай</th>
         </tr>
       </thead>
       <tbody>
@@ -133,11 +133,18 @@ if(isset($_POST['edit'])){
         <tr>
           <th scope="row"><?php echo $exterior[$i]['name']?></th>
           <td><img src="<?php echo $exterior[$i]["image"]?>" class="w-25 image-fluid" alt=""></td>
-          <td>Екстериорна</td>
+          <td>Входна</td>
           <td>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <input type="hidden" value="<?php echo $exterior[$i]['door_id']?>"  name="product"></input>
                 <button name="remove" class="btn btn-outline-dark">премахни</button>
+            </form>
+          </td>
+          <td>
+            <!-- Add an edit button here -->
+            <form action="" method="POST">
+                <input type="hidden" value="<?php echo $exterior[$i]['door_id']?>" name="product_id">
+                <button name="edit" class="btn btn-outline-dark">редактирай</button>
             </form>
           </td>
         </tr>
