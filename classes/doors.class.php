@@ -5,8 +5,13 @@ class Doors extends Dbh {
     
     public function getProducts($category){
 
-        //make a query to get all items
-        $stmt = $this->connect()->prepare("SELECT * FROM Door WHERE brand_category_id = ?");
+        //the query retrieves all items in a specified category regardless of the brand brands
+        $stmt = $this->connect()->prepare(
+            "SELECT * 
+            FROM Door 
+            JOIN Brand_Category ON Door.brand_category_id = Brand_Category.brand_category_id
+            JOIN Category ON Category.category_id = Brand_Category.category_id 
+            WHERE Category.category_id = ? ");
 
         if($stmt->execute([$category])){
             return $stmt->fetchAll();
