@@ -141,40 +141,10 @@ if(isset($_POST['edit'])){
             </form>
           </td>
         </tr>
-        <?php } ?>
+        <?php }?>
       </tbody>
     </table>
-    <?php } ?>
-    <?php if(count($facing) > 0) { ?>
-            <h5 class="text-center mt-5">Облицовки</h5>
-          <table class="table w-75 m-auto">
-      <thead>
-        <tr>
-          <th scope="col">Име</th>
-          <th scope="col">Снимка</th>
-          <th scope="col">Категория</th>
-          <th scope="col">Премахни</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php for($i = 0; $i < count($facing); $i++) {?>
-        <tr>
-          <th scope="row"><?php echo $facing[$i]['name']?></th>
-          <td><img src="<?php echo $facing[$i]["image"]?>" class="w-25 image-fluid" alt=""></td>
-          <td>Облицовка</td>
-          <td>
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" method="POST">
-                <input type="hidden" value="<?php echo $facing[$i]['facing_id']?>"  name="product"></input>
-                <button name="remove_facing" type="submit" class="btn btn-outline-dark">премахни</button>
-            </form>
-          </td>
-        </tr>
-        <?php } ?>
-      </tbody>
-    </table>
-
-</div>
-<?php } ?>
+    <?php }?>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
       </section>
 <?php include_once "includes/footer.php";?>
