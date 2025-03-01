@@ -26,7 +26,7 @@ if ($category === 'interior') {
 }
 include_once "includes/header.php";
 ?>
-<div class="container-fluid">
+<div class'container-fluid">
      <div class="row">
         <!-- Left Column: Accordion -->
         <div class="col-md-2 mt-5">
@@ -67,7 +67,13 @@ include_once "includes/header.php";
         <!-- Right Column: Products -->
         <div class="col-md-10">
             <section class="products mt-5">
-                <button type="button" class="btn btn-outline-dark w-10 hide d-flex justify-content-end">Hide filters</button>
+
+                <!-- Hide Filters Button -->
+                <div class="d-flex justify-content-end mt-3">
+                    <button type="button" class="btn btn-outline-dark hide me-3">Hide filters <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
+                    </svg></button>
+                </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                     <?php foreach($data as $door): ?>
                         <div class="col mt-5">
@@ -96,20 +102,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const productsSection = document.querySelector(".col-md-10"); // The product column
 
     hideButton.addEventListener("click", function () {
-        if (filtersSection.style.display === "none") {
-            // Show filters and return products section to 10 columns
-            filtersSection.style.display = "block";
-            productsSection.classList.remove("col-md-12");
-            productsSection.classList.add("col-md-10");
-            hideButton.textContent = "Hide filters";
-        } else {
-            // Hide filters and make products section full width (12 columns)
-            filtersSection.style.display = "none";
-            productsSection.classList.remove("col-md-10");
-            productsSection.classList.add("col-md-12");
-            hideButton.textContent = "Show filters";
-        }
-    });
+    if (filtersSection.style.display === "none") {
+        filtersSection.style.display = "block";
+        productsSection.classList.remove("col-md-12");
+        productsSection.classList.add("col-md-10");
+        hideButton.innerHTML = `Hide filters 
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
+            </svg>`;
+    } else {
+        filtersSection.style.display = "none";
+        productsSection.classList.remove("col-md-10");
+        productsSection.classList.add("col-md-12");
+        hideButton.innerHTML = `Show filters 
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
+            </svg>`;
+    }
+});
+
 });
 
 
@@ -117,7 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
 <style>
-     
+    .hide:hover svg {
+    fill: white; /* Change the icon color to white on hover */ 
 </style>
 <?php 
 if(isset($_GET['door_id'])){
