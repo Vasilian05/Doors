@@ -1,8 +1,8 @@
 main {
     width: 100%;
     height: calc(100vh - 60px);
-    margin-top: 60px;
     background-image: url(../images/triangle-mosaic.png);
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
