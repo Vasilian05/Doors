@@ -26,6 +26,33 @@ if ($category === 'interior') {
 }
 include_once "includes/header.php";
 ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+        $(".input_price").change(function(){
+            $(".products").load("load_products.php");
+            var selectedFilters = [];
+            $(".input_price:checked").each(function(){
+                selectedFilters.push($(this).val());
+            });
+
+            $.ajax({
+                url: 'load_products.php',
+                method: 'POST',
+                data: { filters: selectedFilters },
+                success: function(response){
+                    alert('AJAX call was successful!' + response); // Alert for testing
+                    $(".products").html(response);
+                },
+            error: function(xhr, status, error) {
+                alert('AJAX call failed: ' + error); // Alert in case of error
+            }
+            })
+        });
+    });
+</script>
 <div class'container-fluid">
      <div class="row">
         <!-- Left Column: Accordion -->
@@ -40,19 +67,19 @@ include_once "includes/header.php";
                     <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <input class="form-check-input input_price" type="checkbox" value="600" id="under_600">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Под 600лв
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <input class="form-check-input input_price" type="checkbox" value="800" id="under_800">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Под 800лв
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <input class="form-check-input input_price" type="checkbox" value="900" id="over_900">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Над 800лв
                                 </label>
@@ -69,15 +96,27 @@ include_once "includes/header.php";
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                         <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <input class="form-check-input" type="checkbox" value="PerfectDoor" id="PerfectDoor">
                                 <label class="form-check-label" for="defaultCheck1">
-                                    Bakish
+                                    PerfectDoor
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <input class="form-check-input" type="checkbox" value="BestDoor" id="BestDoor">
                                 <label class="form-check-label" for="defaultCheck1">
                                     BestDoor
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Vario Door" id="Vario Door">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Vario Door
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="Elit Door" id="Elit Door">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Elit Door
                                 </label>
                             </div>
                         </div>
