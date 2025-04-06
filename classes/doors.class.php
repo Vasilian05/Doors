@@ -51,20 +51,20 @@ class Doors extends Dbh {
         }
     }
 
-    public function getFilteredProducts(array $filters = []){
+    public function getFilteredProducts(array $filters = [], array $brands = []){
         $sql = 'SELECT * FROM Door';
         $params = [];
         $conditions = [];
     
         if (!empty($filters)) {
             foreach ($filters as $filter) {
-                if ($filter === "under_600") {
+                if ($filter == 600) {
                     $conditions[] = 'price < :under_600';
                     $params[':under_600'] = 600;
-                } elseif ($filter === "under_800") {
+                } elseif ($filter == 800) {
                     $conditions[] = 'price < :under_800';
                     $params[':under_800'] = 800;
-                } elseif ($filter === "over_800") {
+                } elseif ($filter == 801) {
                     $conditions[] = 'price > :over_800';
                     $params[':over_800'] = 800;
                 }
@@ -72,10 +72,10 @@ class Doors extends Dbh {
     
             // Combine conditions into the SQL query with AND to ensure all filters are applied
             if (!empty($conditions)) {
-                $sql .= ' WHERE ' . implode(' AND ', $conditions);  // Changed OR to AND
+                $sql .= ' WHERE ' . implode(' OR ', $conditions);  // Changed OR to AND
             }
         }
-    
+        var_dump($conditions);
         // Prepare and execute the SQL statement
         $stmt = $this->connect()->prepare($sql);
         

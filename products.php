@@ -30,28 +30,38 @@ include_once "includes/header.php";
 
 <script>
 
-    $(document).ready(function(){
-        $(".input_price").change(function(){
-            $(".products").load("load_products.php");
-            var selectedFilters = [];
-            $(".input_price:checked").each(function(){
-                selectedFilters.push($(this).val());
-            });
+$(document).ready(function() {
+    $(".input_price").change(function() {
+        var selectedPrices = [];
+        var selectedBrands = [];
 
-            $.ajax({
-                url: 'load_products.php',
-                method: 'POST',
-                data: { filters: selectedFilters },
-                success: function(response){
-                    alert('AJAX call was successful!' + response); // Alert for testing
-                    $(".products").html(response);
-                },
+       // Collect selected price filters
+       $(".input_price:checked").each(function() {
+            selectedPrices.push($(this).val());
+        });
+
+        // Collect selected brand filters
+        $(".input_brand:checked").each(function() {
+            selectedBrands.push($(this).val());
+        });
+        
+        $.ajax({
+            url: 'load_products.php',
+            method: 'POST',
+            data: {  prices: selectedPrices,
+                    brands: selectedBrands 
+            }, // Send as an array
+            success: function(response) {
+                //alert('AJAX call was successful!'); // Alert for testing
+                $(".products").html(response);
+            },
             error: function(xhr, status, error) {
                 alert('AJAX call failed: ' + error); // Alert in case of error
             }
-            })
         });
     });
+});
+
 </script>
 <div class'container-fluid">
      <div class="row">
@@ -79,7 +89,7 @@ include_once "includes/header.php";
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input input_price" type="checkbox" value="900" id="over_900">
+                                <input class="form-check-input input_price" type="checkbox" value="801" id="over_800">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Над 800лв
                                 </label>
