@@ -27,7 +27,7 @@ if (!empty($selectedPrices) || !empty($selectedBrands)) {
                     <h5 class="card-title"><?php echo $door['name']; ?></h5>
                     <p>Цена: <?php echo $door['price']; ?>лв</p>
                     <p><?php echo $door['short_description']; ?></p>
-                    <a href="product.php?category=<?php echo $category; ?>&id=<?php echo isset($door['id']); ?>" class="btn btn-outline-dark">Виж повече</a>
+                    <a href="product.php?category=<?php echo $category; ?>&id=<?php echo $door['door_id']; ?>" class="btn btn-outline-dark">Виж повече</a>
                 </div>
             </div>
         </div>
