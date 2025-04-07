@@ -38,10 +38,10 @@
               <a class="dropdown-item dropdown-toggle" href="#">Интериорни</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="products.php?category=interior">Всички</a></li>
-                <li><a class="dropdown-item" href="products.php?subcategory=vario">VarioDoor</a></li>
-                <li><a class="dropdown-item" href="products.php?subcategory=best">Best Door</a></li>
-                <li><a class="dropdown-item" href="products.php?subcategory=best">Perfect Door</a></li>
-                <li><a class="dropdown-item" href="products.php?subcategory=best">Elit Door</a></li>
+                <li><a class="dropdown-item" href="products.php?subcategory=VarioDoor">VarioDoor</a></li>
+                <li><a class="dropdown-item" href="products.php?subcategory=BestDoor">Best Door</a></li>
+                <li><a class="dropdown-item" href="products.php?subcategory=PerfectDoor">Perfect Door</a></li>
+                <li><a class="dropdown-item" href="products.php?subcategory=ElitDoor">Elit Door</a></li>
               </ul>
             </li>
             <li><a class="dropdown-item" href="products.php?category=exterior">Входни</a></li>

@@ -23,6 +23,14 @@ if ($category === 'interior') {
     echo "<h2>Входни Врати</h2>";
     $data = $doors->getProducts(2);
     // Place your code here to fetch and display exterior door items from the database or any other data source
+}else if($category === 'PerfectDoor'){
+
+}else if($category === 'VarioDoor'){
+
+}else if($category === 'BestDoor'){
+
+}else if($category === 'ElitDoor'){
+
 }
 include_once "includes/header.php";
 ?>
