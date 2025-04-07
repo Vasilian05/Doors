@@ -15,21 +15,45 @@ if ($category === 'interior') {
     $meta_description = "Разгледайте богатата ни селекция от интериорни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
     echo "<h2>Интериорни Врати</h2>";
     $data = $doors->getProducts(1);
-    // Place your code here to fetch and display interior door items from the database or any other data source
+    
 } else if ($category === 'exterior') {
     // Generate content for exterior doors
     $page_title = "Входни врати – Стил и Качество за Вашия Дом";
     $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
     echo "<h2>Входни Врати</h2>";
     $data = $doors->getProducts(2);
-    // Place your code here to fetch and display exterior door items from the database or any other data source
+    
 }else if($category === 'PerfectDoor'){
+
+    // Generate content for exterior doors
+    $page_title = "Входни врати – Стил и Качество за Вашия Дом";
+    $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
+    echo "<h2>Входни Врати</h2>";
+    $data = $doors->getProductBrand(4);
 
 }else if($category === 'VarioDoor'){
 
+    // Generate content for exterior doors
+    $page_title = "Входни врати – Стил и Качество за Вашия Дом";
+    $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
+    echo "<h2>Входни Врати</h2>";
+    $data = $doors->getProductBrand(3);
+
 }else if($category === 'BestDoor'){
 
+    // Generate content for exterior doors
+    $page_title = "Входни врати – Стил и Качество за Вашия Дом";
+    $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
+    echo "<h2>Входни Врати</h2>";
+    $data = $doors->getProductBrand(1);
+
 }else if($category === 'ElitDoor'){
+
+    // Generate content for exterior doors
+    $page_title = "Входни врати – Стил и Качество за Вашия Дом";
+    $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
+    echo "<h2>Входни Врати</h2>";
+    $data = $doors->getProductBrand(2);
 
 }
 include_once "includes/header.php";
