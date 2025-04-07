@@ -212,6 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <style>
     .hide:hover svg {
     fill: white; /* Change the icon color to white on hover */ 
+    }
 </style>
 <?php 
 if(isset($_GET['door_id'])){

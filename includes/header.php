@@ -34,11 +34,18 @@
             Врати
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="products.php?category=interior">Интериорни</a></li>
+            <li class="dropdown-submenu">
+              <a class="dropdown-item dropdown-toggle" href="#">Интериорни</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="products.php?subcategory=vario">Варио</a></li>
+                <li><a class="dropdown-item" href="products.php?subcategory=best">Бест</a></li>
+              </ul>
+            </li>
             <li><a class="dropdown-item" href="products.php?category=exterior">Входни</a></li>
             <li><a class="dropdown-item" href="products.php?category=facing">Облицовки</a></li>
           </ul>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="distributors.php">Дистрибутори</a>
         </li>
@@ -84,4 +91,22 @@ if($_SESSION['user_type'] == "admin"){
  a:active {
   text-decoration: underline;
  }
+
+ /* Enable submenu dropdowns */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  display: none;
+  position: absolute;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
 </style>
