@@ -5,7 +5,7 @@ class Doors extends Dbh {
     
     public function getProducts($category){
 
-        //the query retrieves all items in a specified category regardless of the brand brands
+        //the query retrieves all items in a specified category regardless of the brand 
         $stmt = $this->connect()->prepare(
             "SELECT * 
             FROM Door 
@@ -19,6 +19,24 @@ class Doors extends Dbh {
             $stmt = null;
             exit();
         }
+    }
+
+    public function getProductBrand($brand_id){
+
+        //the query retrieves all items in a specified brand regardless of the category 
+        $stmt = $this->connect()->prepare(
+            "SELECT * 
+            FROM Door 
+            JOIN Brand_Category ON Door.brand_category_id = Brand_Category.brand_category_id
+            JOIN Brand ON Brand.brand_id = Brand_Category.brand_id 
+            WHERE Brand.brand_id = ? ");
+
+            if($stmt->execute([$brand_id])){
+                return $stmt->fetchAll();
+            }else{
+                $stmt = null;
+                exit();
+            }
     }
 
     public function deleteDoor($id){
