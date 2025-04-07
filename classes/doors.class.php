@@ -51,46 +51,34 @@ class Doors extends Dbh {
         }
     }
 
-    public function getFilteredProducts(array $filters = [], array $brands = []){
-        $sql = 'SELECT * FROM Door';
-        $params = [];
-        $conditions = [];
-    
-        if (!empty($filters)) {
-            foreach ($filters as $filter) {
-                if ($filter == 600) {
-                    $conditions[] = 'price < :under_600';
-                    $params[':under_600'] = 600;
-                } elseif ($filter == 800) {
-                    $conditions[] = 'price < :under_800';
-                    $params[':under_800'] = 800;
-                } elseif ($filter == 801) {
-                    $conditions[] = 'price > :over_800';
-                    $params[':over_800'] = 800;
-                }
-            }
-    
-            // Combine conditions into the SQL query with AND to ensure all filters are applied
-            if (!empty($conditions)) {
-                $sql .= ' WHERE ' . implode(' OR ', $conditions);  // Changed OR to AND
-            }
+    public function getFilteredProducts(array $prices = [], array $brands = []): array
+{
+
+    $sql = "SELECT * FROM Door WHERE 1=1";
+    $params = [];
+
+    // Add price filters to the query
+    if (!empty($prices)) {
+        $priceConditions = [];
+        foreach ($prices as $price) {
+            $priceConditions[] = 'price <= ?';
+            $params[] = $price;
         }
-        var_dump($conditions);
-        // Prepare and execute the SQL statement
-        $stmt = $this->connect()->prepare($sql);
-        
-        // Bind parameters to avoid SQL injection
-        foreach ($params as $param => $value) {
-            $stmt->bindValue($param, $value);
-        }
-    
-        if ($stmt->execute()) {
-            return $stmt->fetchAll();
-        } else {
-            $stmt = null;
-            return false;
-        }
+        $sql .= ' AND (' . implode(' OR ', $priceConditions) . ')';
     }
-    
+
+    // Add brand filters to the query
+    if (!empty($brands)) {
+        $brandPlaceholders = implode(',', array_fill(0, count($brands), '?'));
+        $sql .= " AND brand IN ($brandPlaceholders)";
+        $params = array_merge($params, $brands);
+    }
+
+    $stmt = $this->connect()->prepare($sql);
+    $stmt->execute($params);
+
+    return $stmt->fetchAll();
+}
+
 
 }

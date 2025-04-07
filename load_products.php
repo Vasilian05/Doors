@@ -1,18 +1,21 @@
 <?php
 include_once "classes/doors.class.php";
 
-// Fetch the selected filters from the AJAX request
-$filters = isset($_POST['filters']) ? $_POST['filters'] : [];
+// Retrieve filters from POST data
+$selectedPrices = isset($_POST['prices']) ? $_POST['prices'] : [];
+$selectedBrands = isset($_POST['brands']) ? $_POST['brands'] : [];
 
-var_dump($filters);
+
 $doors = new Doors();
 
 // If filters are applied, pass them to the function
-if (!empty($filters)) {
-    $data = $doors->getFilteredProducts($filters);
+if (!empty($selectedPrices) || empty($selectedBrands)) {
+    $data = $doors->getFilteredProducts($selectedPrices, $selectedBrands);
+    
 } else {
     // If no filters are selected, fetch all products
-    $data = $doors->getProducts(1);  // Assuming this method fetches all products without filters
+    echo 3;
+    $data = $doors->getProducts(1); 
 }?>
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">

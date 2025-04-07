@@ -106,25 +106,25 @@ $(document).ready(function() {
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                         <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="PerfectDoor" id="PerfectDoor">
+                                <input class="form-check-input input_brand" type="checkbox" value="PerfectDoor" id="PerfectDoor">
                                 <label class="form-check-label" for="defaultCheck1">
                                     PerfectDoor
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="BestDoor" id="BestDoor">
+                                <input class="form-check-input input_brand" type="checkbox" value="BestDoor" id="BestDoor">
                                 <label class="form-check-label" for="defaultCheck1">
                                     BestDoor
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Vario Door" id="Vario Door">
+                                <input class="form-check-input input_brand" type="checkbox" value="Vario Door" id="Vario Door">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Vario Door
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Elit Door" id="Elit Door">
+                                <input class="form-check-input input_brand" type="checkbox" value="Elit Door" id="Elit Door">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Elit Door
                                 </label>
