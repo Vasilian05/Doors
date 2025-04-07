@@ -54,14 +54,18 @@ class Doors extends Dbh {
     public function getFilteredProducts(array $prices = [], array $brands = []): array
 {
 
-    $sql = "SELECT * FROM Door WHERE 1=1";
+    $sql = "SELECT *
+    FROM Door
+    JOIN Brand_Category ON Door.brand_category_id = Brand_Category.brand_category_id
+    WHERE 1 = 1";
     $params = [];
 
     // Add price filters to the query
     if (!empty($prices)) {
         $priceConditions = [];
         foreach ($prices as $price) {
-            $priceConditions[] = 'price <= ?';
+            
+            $priceConditions[] = 'Door.price <= ?';
             $params[] = $price;
         }
         $sql .= ' AND (' . implode(' OR ', $priceConditions) . ')';
@@ -69,8 +73,9 @@ class Doors extends Dbh {
 
     // Add brand filters to the query
     if (!empty($brands)) {
+        
         $brandPlaceholders = implode(',', array_fill(0, count($brands), '?'));
-        $sql .= " AND brand IN ($brandPlaceholders)";
+        $sql .= " AND Brand_Category.brand_id IN ($brandPlaceholders)";
         $params = array_merge($params, $brands);
     }
 

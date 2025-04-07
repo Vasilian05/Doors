@@ -31,7 +31,7 @@ include_once "includes/header.php";
 <script>
 
 $(document).ready(function() {
-    $(".input_price").change(function() {
+    $(".input_price, .input_brand").change(function() {
         var selectedPrices = [];
         var selectedBrands = [];
 
@@ -45,6 +45,7 @@ $(document).ready(function() {
             selectedBrands.push($(this).val());
         });
         
+        console.log(selectedBrands);
         $.ajax({
             url: 'load_products.php',
             method: 'POST',
@@ -106,25 +107,25 @@ $(document).ready(function() {
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                         <div class="form-check">
-                                <input class="form-check-input input_brand" type="checkbox" value="PerfectDoor" id="PerfectDoor">
+                                <input class="form-check-input input_brand" type="checkbox" value="4" id="PerfectDoor">
                                 <label class="form-check-label" for="defaultCheck1">
                                     PerfectDoor
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input input_brand" type="checkbox" value="BestDoor" id="BestDoor">
+                                <input class="form-check-input input_brand" type="checkbox" value="1" id="BestDoor">
                                 <label class="form-check-label" for="defaultCheck1">
                                     BestDoor
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input input_brand" type="checkbox" value="Vario Door" id="Vario Door">
+                                <input class="form-check-input input_brand" type="checkbox" value="3" id="Vario Door">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Vario Door
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input input_brand" type="checkbox" value="Elit Door" id="Elit Door">
+                                <input class="form-check-input input_brand" type="checkbox" value="2" id="Elit Door">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Elit Door
                                 </label>

@@ -9,12 +9,12 @@ $selectedBrands = isset($_POST['brands']) ? $_POST['brands'] : [];
 $doors = new Doors();
 
 // If filters are applied, pass them to the function
-if (!empty($selectedPrices) || empty($selectedBrands)) {
+if (!empty($selectedPrices) || !empty($selectedBrands)) {
     $data = $doors->getFilteredProducts($selectedPrices, $selectedBrands);
     
 } else {
     // If no filters are selected, fetch all products
-    echo 3;
+    
     $data = $doors->getProducts(1); 
 }?>
 
