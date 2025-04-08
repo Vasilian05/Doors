@@ -2,12 +2,12 @@
 
 
 <?php
+include_once "includes/header.php";
 
 $doors = new Doors();
 // Retrieve the selected category from the URL parameters
 $category = isset($_GET['category']) ? $_GET['category'] : '';
 //
-
 // Generate content based on the selected category
 if ($category === 'interior') {
     // Generate content for interior doors
@@ -56,7 +56,7 @@ if ($category === 'interior') {
     $data = $doors->getProductBrand(2);
 
 }
-include_once "includes/header.php";
+
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 

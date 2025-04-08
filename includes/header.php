@@ -30,34 +30,34 @@
           <a class="nav-link" href="#">За нас</a>
         </li>
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Врати
-        </a>
-        <ul class="dropdown-menu">
-          <!-- Интериорни (Main) -->
-          <li>
-            <a class="dropdown-item" href="products.php?category=interior"><strong>Интериорни</strong></a>
-          </li>
+            Врати
+          </a>
+          <ul class="dropdown-menu">
+            <!-- Интериорни (Main) -->
+            <li>
+              <a class="dropdown-item" href="products.php?category=interior">Интериорни</a>
+            </li>
 
-          <!-- Simulated Submenu Options -->
-          <li>
-            <a class="dropdown-item ps-4 text-muted small" href="products.php?category=VarioDoor">VarioDoor</a>
-          </li>
-          <li>
-            <a class="dropdown-item ps-4 text-muted small" href="products.php?category=BestDoor">Best Door</a>
-          </li>
-          <li>
-            <a class="dropdown-item ps-4 text-muted small" href="products.php?category=PerfectDoor">Perfect Door</a>
-          </li>
-          <li>
-            <a class="dropdown-item ps-4 text-muted small" href="products.php?category=ElitDoor">Elit Door</a>
-          </li>
+            <!-- Simulated Submenu Items with tighter spacing -->
+            <li class="py-0">
+              <a class="dropdown-item ps-4 text-muted small py-1 sub-interior" href="products.php?category=VarioDoor">VarioDoor</a>
+            </li>
+            <li class="py-0">
+              <a class="dropdown-item ps-4 text-muted small py-1 sub-interior" href="products.php?category=BestDoor">Best Door</a>
+            </li>
+            <li class="py-0">
+              <a class="dropdown-item ps-4 text-muted small py-1 sub-interior" href="products.php?category=PerfectDoor">Perfect Door</a>
+            </li>
+            <li class="py-0">
+              <a class="dropdown-item ps-4 text-muted small py-1 sub-interior" href="products.php?category=ElitDoor">Elit Door</a>
+            </li>
 
-          <!-- Other categories -->
-          <li><a class="dropdown-item" href="products.php?category=exterior">Входни</a></li>
-          <li><a class="dropdown-item" href="products.php?category=facing">Облицовки</a></li>
-        </ul>
-      </li>
+            <!-- Other categories -->
+            <li><a class="dropdown-item" href="products.php?category=exterior">Входни</a></li>
+            <li><a class="dropdown-item" href="products.php?category=facing">Облицовки</a></li>
+          </ul>
+        </li>
+
 
         
         <li class="nav-item">
@@ -140,6 +140,17 @@ if($_SESSION['user_type'] == "admin"){
     margin-left: 0;
   }
 }
+.dropdown-item:focus,
+.dropdown-item:active {
+  background-color: transparent !important;
+  color: #6c757d !important; /* grey tone */
+  box-shadow: none;
+}
 
-
+.sub-interior {
+  margin-left: 15px;
+  font-size: 0.9rem;
+  color: grey;
+  line-height: 1.4;
+}
 </style>
