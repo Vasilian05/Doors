@@ -30,25 +30,36 @@
           <a class="nav-link" href="#">За нас</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Врати
-          </a>
-          <ul class="dropdown-menu">
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Интериорни</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="products.php?category=interior">Всички</a></li>
-                <li><a class="dropdown-item" href="products.php?category=VarioDoor">VarioDoor</a></li>
-                <li><a class="dropdown-item" href="products.php?category=BestDoor">Best Door</a></li>
-                <li><a class="dropdown-item" href="products.php?category=PerfectDoor">Perfect Door</a></li>
-                <li><a class="dropdown-item" href="products.php?category=ElitDoor">Elit Door</a></li>
-              </ul>
-            </li>
-            <li><a class="dropdown-item" href="products.php?category=exterior">Входни</a></li>
-            <li><a class="dropdown-item" href="products.php?category=facing">Облицовки</a></li>
-          </ul>
-        </li>
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Врати
+        </a>
+        <ul class="dropdown-menu">
+          <!-- Интериорни (Main) -->
+          <li>
+            <a class="dropdown-item" href="products.php?category=interior"><strong>Интериорни</strong></a>
+          </li>
 
+          <!-- Simulated Submenu Options -->
+          <li>
+            <a class="dropdown-item ps-4 text-muted small" href="products.php?category=VarioDoor">VarioDoor</a>
+          </li>
+          <li>
+            <a class="dropdown-item ps-4 text-muted small" href="products.php?category=BestDoor">Best Door</a>
+          </li>
+          <li>
+            <a class="dropdown-item ps-4 text-muted small" href="products.php?category=PerfectDoor">Perfect Door</a>
+          </li>
+          <li>
+            <a class="dropdown-item ps-4 text-muted small" href="products.php?category=ElitDoor">Elit Door</a>
+          </li>
+
+          <!-- Other categories -->
+          <li><a class="dropdown-item" href="products.php?category=exterior">Входни</a></li>
+          <li><a class="dropdown-item" href="products.php?category=facing">Облицовки</a></li>
+        </ul>
+      </li>
+
+        
         <li class="nav-item">
           <a class="nav-link" href="distributors.php">Дистрибутори</a>
         </li>
@@ -112,4 +123,23 @@ if($_SESSION['user_type'] == "admin"){
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
 }
+
+/* For horizontal submenu layout on desktop */
+.dropdown-menu .dropdown-menu {
+  left: 100%;
+  top: 0;
+  margin-left: 0.1rem;
+}
+
+/* Make sure it doesn't break mobile stacking */
+@media (max-width: 991.98px) {
+  .dropdown-menu .dropdown-menu {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-left: 0;
+  }
+}
+
+
 </style>
