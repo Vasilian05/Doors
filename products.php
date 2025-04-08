@@ -178,7 +178,6 @@ $(document).ready(function() {
             </div>
         </div>
 
-        <!-- Right Column: Products -->
         <div class="col-md-10">
             <div class="d-flex justify-content-end mt-5">
                 <button type="button" class="btn btn-outline-dark hide me-3">Hide filters <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
@@ -187,7 +186,6 @@ $(document).ready(function() {
             </div>
             <section class="products">
 
-                <!-- Hide Filters Button -->
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                     <?php foreach($data as $door): ?>
                         <div class="col mt-5">
