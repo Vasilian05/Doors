@@ -59,12 +59,10 @@ class Product extends Dbh {
         // Check for errors
         if (empty($errors)) {
 
-            if($this->category_id == "interior"){
+            if($this->category_id == 1){
                 $targetDir = "interior_img/";
-            }elseif($this->category_id == "exterior"){
+            }elseif($this->category_id == 2){
                 $targetDir = "exterior_img/";
-            }else{
-                $targetDir = "facing_img/";
             }
             
             $targetFile = $targetDir . basename($this->image['name']);

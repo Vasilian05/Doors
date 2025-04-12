@@ -1,5 +1,4 @@
 <?php
-
 include_once "classes/products.class.php"; 
 include_once "classes/doors.class.php";
 
