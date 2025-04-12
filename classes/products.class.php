@@ -139,21 +139,49 @@ class Product extends Dbh {
         }
     }
 
-    public function editDoor($id, $price){
-
-        //get door from db
-        $stmt = $this->connect()->prepare("UPDATE Door SET name = ?, price = ?, description = ?, category_id = ?, short_description =? WHERE door_id = ?");
-        if($stmt->execute([$this->name, $price, $this->description, $this->getCategory(), $this->short_description, $id])){
-            
-            echo $_SERVER['PHP_SELF'];
-            echo "Продуктът е редактиран успешно";
-        }else{
-            //return false if statement fails
-            $stmt = null;
-            echo "Възникна грешка, моля опитайте по-късно.";
-            return false;
+    public function editDoor($id, $price) {
+        // Validate inputs
+        if (empty($id) || !is_numeric($id)) {
+            throw new Exception("Invalid door ID");
         }
-
+        
+        if (!is_numeric($price)) {
+            throw new Exception("Price must be a number");
+        }
+        
+        // Store the price in the object
+        $this->price = $price;
+        
+        try {
+            $stmt = $this->connect()->prepare("UPDATE Door SET 
+                name = ?, 
+                price = ?, 
+                description = ?, 
+                category_id = ?, 
+                short_description = ? 
+                WHERE door_id = ?");
+                
+            $success = $stmt->execute([
+                $this->name, 
+                $this->price, 
+                $this->description, 
+                $this->getCategory(), 
+                $this->short_description, 
+                $id
+            ]);
+            
+            $stmt = null;
+            
+            if ($success) {
+                return true;
+            } else {
+                throw new Exception("Database update failed");
+            }
+            
+        } catch (PDOException $e) {
+            error_log("Database error: " . $e->getMessage());
+            throw new Exception("Failed to update door: " . $e->getMessage());
+        }
     }
 
 }

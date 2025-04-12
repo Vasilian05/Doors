@@ -1,8 +1,5 @@
-<?php include_once "includes/header.php";
-include_once "classes/products.class.php";
-include_once "classes/doors.class.php";
-
-
+<?php
+session_start();
 //make sure only admins can access the page
 if($_SESSION['user_type'] != "admin"){
     header("location:index.php");
@@ -33,10 +30,16 @@ if(isset($_POST['edit'])){
  header('location:update.php');
  $_SESSION['Door_id'] = $_POST['product_id'];
 }
+
+include_once "includes/header.php";
+include_once "classes/products.class.php";
+include_once "classes/doors.class.php";
+
     //getting all items from database
     $doors = new Doors();
     $interior = $doors->getProducts(1);
     $exterior = $doors->getProducts(2);
+ 
 ?>
 <div class="content">
 
