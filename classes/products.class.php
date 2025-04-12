@@ -1,37 +1,40 @@
 <?php include_once 'config.php'; 
 
 class Product extends Dbh {
-
-   
     private $name;
     private $price;
-    private $category;
+    private $brand_id;
+    private $category_id;
     private $description;
     private $image;
     private $short_description;
     private $allowedExtensions = array('jpg', 'jpeg', 'png', 'WEBP');
     private $maxFileSize = 500000; // 500KB
 
-    public function __construct($name, $category, $description, $image, $short_description){
-        $this->name=$name;
-        $this->category=$category;
-        $this->description=$description;
-        $this->image=$image;
-        $this->short_description=$short_description;
+    public function __construct($name, $brand_id, $category_id, $description, $image, $short_description) {
+        $this->name = $name;
+        $this->brand_id = $brand_id;
+        $this->category_id = $category_id;
+        $this->description = $description;
+        $this->short_description = $short_description;
 
+        if (is_array($image) && isset($image['name'])) {
+            $this->image = $image;
+        } else {
+            $this->image = null;
+        }
     }
-
     private function checkEmpty(){
-        if($this->name == "" || $this->category == "" || $this->description == "" || $this->short_description == ""){
+        if($this->name == "" || $this->category_id == "" || $this->description == "" || $this->short_description == ""){
             return "Всички полета трябва да бъдат попълнени";
         }
     }
 
     private function getCategory(){
 
-        if ($this->category == "interior") {
+        if ($this->category_id == "interior") {
             return 1;
-        }else if ($this->category == "exterior") {
+        }else if ($this->category_id == "exterior") {
             return 2;
         }else{
             return 3;
@@ -56,9 +59,9 @@ class Product extends Dbh {
         // Check for errors
         if (empty($errors)) {
 
-            if($this->category == "interior"){
+            if($this->category_id == "interior"){
                 $targetDir = "interior_img/";
-            }elseif($this->category == "exterior"){
+            }elseif($this->category_id == "exterior"){
                 $targetDir = "exterior_img/";
             }else{
                 $targetDir = "facing_img/";
@@ -83,7 +86,7 @@ class Product extends Dbh {
     //query to insert all values in the database 
     private function insertValues($image_path){
 
-        if($this->category != "facing"){
+        if($this->category_id != "facing"){
 
             $stmt = $this->connect()->prepare('INSERT INTO Door(category_id, name, description, image, short_description) VALUES(?, ?, ?, ?, ?)');
             
@@ -102,6 +105,32 @@ class Product extends Dbh {
             }
         }
         
+    }
+
+    private function getBrandCategoryId() {
+        // Check if brand-category relationship exists
+        $stmt = $this->connect()->prepare(
+            "SELECT brand_category_id FROM Brand_Category 
+             WHERE brand_id = ? AND category_id = ?"
+        );
+        
+        if ($stmt->execute([$this->brand_id, $this->category_id])) {
+            $result = $stmt->fetch();
+            if ($result) {
+                return $result['brand_category_id'];
+            }
+        }
+        
+        // Create new brand-category relationship if it doesn't exist
+        $stmt = $this->connect()->prepare(
+            "INSERT INTO Brand_Category (brand_id, category_id) VALUES (?, ?)"
+        );
+        
+        if ($stmt->execute([$this->brand_id, $this->category_id])) {
+            return $this->connect()->lastInsertId();
+        }
+        
+        throw new Exception("Failed to create brand-category relationship");
     }
 
     //check validations and insert products in DB 
