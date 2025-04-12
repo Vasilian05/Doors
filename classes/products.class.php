@@ -84,27 +84,30 @@ class Product extends Dbh {
     //check if the door is interior or exterior
 
     //query to insert all values in the database 
-    private function insertValues($image_path){
-
-        if($this->category_id != "facing"){
-
-            $stmt = $this->connect()->prepare('INSERT INTO Door(category_id, name, description, image, short_description) VALUES(?, ?, ?, ?, ?)');
-            
-            if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path, $this->short_description])){
-                echo "Продуктът е качен успешно!";
-            }else{
-                echo "Продуктът не е качен";
-            }
-        }else {
-            $stmt = $this->connect()->prepare('INSERT INTO Facing(category_id, name, description, image, short_description) VALUES(?, ?, ?, ?)');
-            
-            if($stmt->execute([$this->getCategory(), $this->name, $this->description, $image_path, $this->short_description])){
-                echo "Продуктът е качен успешно!";
-            }else{
-                echo "Продуктът не е качен";
-            }
-        }
+    private function insertValues($image_path) {
+        $brand_category_id = $this->getBrandCategoryId();
         
+        $stmt = $this->connect()->prepare(
+            "INSERT INTO Door (
+                brand_category_id, 
+                name, 
+                price, 
+                description, 
+                image, 
+                short_description
+            ) VALUES (?, ?, ?, ?, ?, ?)"
+        );
+        
+        if (!$stmt->execute([
+            $brand_category_id,
+            $this->name,
+            $this->price ?? null, // Handle cases where price might not be set
+            $this->description,
+            $image_path,
+            $this->short_description
+        ])) {
+            throw new Exception("Failed to insert product");
+        }
     }
 
     private function getBrandCategoryId() {
