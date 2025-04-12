@@ -1,14 +1,15 @@
 <?php 
-// Start session and check admin status at the VERY TOP
-if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != "admin") {
-    header("Location: index.php");
-    exit();
-}
-
-include_once "includes/header.php"; 
 include_once "classes/products.class.php";
 include_once "classes/doors.class.php";
 include_once "classes/users.class.php";
+
+
+//make sure only admins can access the page
+if($_SESSION['user_type'] != "admin"){
+  header("location:admin.php");
+}
+
+
 
 // Get door ID from session
 $door_id = $_SESSION['Door_id'] ?? null;
@@ -55,6 +56,7 @@ if (isset($_POST['update'])) {
         $error = $e->getMessage();
     }
 }
+include_once "includes/header.php"; 
 ?>
 
 <div class="content">

@@ -188,4 +188,17 @@ class Doors extends Dbh {
         
         return false;
     }
+
+    public function getAllProductsWithBrandCategory() {
+        $stmt = $this->connect()->prepare(
+            "SELECT d.*, b.brand_name, c.category_name 
+             FROM Door d
+             JOIN Brand_Category bc ON d.brand_category_id = bc.brand_category_id
+             JOIN Brand b ON bc.brand_id = b.brand_id
+             JOIN Category c ON bc.category_id = c.category_id
+             ORDER BY c.category_name, b.brand_name, d.name"
+        );
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }

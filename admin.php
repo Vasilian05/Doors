@@ -1,13 +1,14 @@
 <?php
-// Make sure only admins can access the page
-if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] != "admin") {
-    header("Location: index.php");
-    exit();
+
+include_once "classes/products.class.php"; 
+include_once "classes/doors.class.php";
+
+
+//make sure only admins can access the page
+if($_SESSION['user_type'] != "admin"){
+  header("location:login.php");
 }
 
-include_once "includes/header.php";
-include_once "classes/products.class.php";
-include_once "classes/doors.class.php";
 
 $doors = new Doors();
 
@@ -25,7 +26,7 @@ if (isset($_POST['btn'])) {
         $item = new Product($name, $brand_id, $category_id, $description, $image, $short_description);
         $item->addItem($price);
         $_SESSION['success'] = "Продуктът е добавен успешно!";
-        header("Location: admin.php");
+        header("location:admin.php");
         exit();
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage();
@@ -41,17 +42,18 @@ if (isset($_POST['remove'])) {
     } else {
         $_SESSION['error'] = "Грешка при изтриване на продукт!";
     }
-    header("Location: admin.php");
+    header("location:admin.php");
     exit();
 }
 
 // Edit item
 if (isset($_POST['edit'])) {
     $_SESSION['Door_id'] = $_POST['product_id'];
-    header("Location: update.php");
+    header("location:update.php");
     exit();
 }
 
+include_once "includes/header.php";
 // Get all products grouped by category
 $all_products = $doors->getAllProductsWithBrandCategory();
 $products_by_category = [];
