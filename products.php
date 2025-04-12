@@ -28,7 +28,7 @@ if ($category === 'interior') {
     // Generate content for exterior doors
     $page_title = "Входни врати – Стил и Качество за Вашия Дом";
     $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
-    echo "<h2>Входни Врати</h2>";
+    echo "<h2>Интериорни Врати PerfectDoor</h2>";
     $data = $doors->getProductBrand(4);
 
 }else if($category === 'VarioDoor'){
@@ -36,7 +36,7 @@ if ($category === 'interior') {
     // Generate content for exterior doors
     $page_title = "Входни врати – Стил и Качество за Вашия Дом";
     $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
-    echo "<h2>Входни Врати</h2>";
+    echo "<h2>Интериорни Врати VarioDoor</h2>";
     $data = $doors->getProductBrand(3);
 
 }else if($category === 'BestDoor'){
@@ -44,7 +44,7 @@ if ($category === 'interior') {
     // Generate content for exterior doors
     $page_title = "Входни врати – Стил и Качество за Вашия Дом";
     $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
-    echo "<h2>Входни Врати</h2>";
+    echo "<h2>Интериорни Врати BestDoor</h2>";
     $data = $doors->getProductBrand(1);
 
 }else if($category === 'ElitDoor'){
@@ -52,7 +52,7 @@ if ($category === 'interior') {
     // Generate content for exterior doors
     $page_title = "Входни врати – Стил и Качество за Вашия Дом";
     $meta_description = "Разгледайте богатата ни селекция от Входни врати, проектирани за съвременни интериори. Намерете перфектното съчетание от модерен дизайн, функционалност и издръжливост за вашия дом.";
-    echo "<h2>Входни Врати</h2>";
+    echo "<h2>Интериорни Врати ElitDoor</h2>";
     $data = $doors->getProductBrand(2);
 
 }
