@@ -171,44 +171,69 @@ class Product extends Dbh {
         }
     }
 
-    public function editDoor($id, $price) {
+    public function editDoor($id, $price, $newImage = null) {
         // Validate inputs
         if (empty($id) || !is_numeric($id)) {
             throw new Exception("Invalid door ID");
         }
         
-        if (!is_numeric($price)) {
-            throw new Exception("Price must be a number");
+        $this->price = $price;
+        $imagePath = null;
+        
+        // Handle image upload if provided
+        if ($newImage !== null && is_array($newImage)) {
+            $imagePath = $this->uploadImage();
+            if (is_array($imagePath)) {
+                throw new Exception(implode(", ", $imagePath));
+            }
         }
         
-        // Store the price in the object
-        $this->price = $price;
-        
         try {
-            $stmt = $this->connect()->prepare("UPDATE Door SET 
-                name = ?, 
-                price = ?, 
-                description = ?, 
-                category_id = ?, 
-                short_description = ? 
-                WHERE door_id = ?");
-                
-            $success = $stmt->execute([
-                $this->name, 
-                $this->price, 
-                $this->description, 
-                $this->getCategory(), 
-                $this->short_description, 
-                $id
-            ]);
+            // Get the current brand_category_id or create new one
+            $brand_category_id = $this->getBrandCategoryId();
             
+            // Build the query
+            if ($imagePath) {
+                $sql = "UPDATE Door SET 
+                    brand_category_id = ?,
+                    name = ?, 
+                    price = ?, 
+                    description = ?, 
+                    short_description = ?,
+                    image = ?
+                    WHERE door_id = ?";
+                $params = [
+                    $brand_category_id,
+                    $this->name, 
+                    $this->price, 
+                    $this->description, 
+                    $this->short_description,
+                    $imagePath,
+                    $id
+                ];
+            } else {
+                $sql = "UPDATE Door SET 
+                    brand_category_id = ?,
+                    name = ?, 
+                    price = ?, 
+                    description = ?, 
+                    short_description = ? 
+                    WHERE door_id = ?";
+                $params = [
+                    $brand_category_id,
+                    $this->name, 
+                    $this->price, 
+                    $this->description, 
+                    $this->short_description, 
+                    $id
+                ];
+            }
+            
+            $stmt = $this->connect()->prepare($sql);
+            $success = $stmt->execute($params);
             $stmt = null;
             
-            if ($success) {
-                return true;
-            } else {
-                throw new Exception("Database update failed");
-            }
+            return $success;
             
         } catch (PDOException $e) {
             error_log("Database error: " . $e->getMessage());
