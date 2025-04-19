@@ -59,7 +59,7 @@ $doors = $doors->getProducts(1);
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <?php
-                for($i = 0; $i < count($doors); $i++){
+                for($i = 0; $i < 5; $i++){
     
                     ?>
                     <div class="swiper-slide">
