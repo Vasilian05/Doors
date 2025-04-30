@@ -2,7 +2,7 @@
 <?php include 'classes/doors.class.php';
 
 $doors = new Doors();
-$doors = $doors->getProducts(1);
+$doors = $doors->getProducts(2);
 
 ?>
 <!DOCTYPE html>
@@ -73,6 +73,10 @@ $doors = $doors->getProducts(1);
             }
             ?>
         </div>
+        <div class="text-center mt-4">
+             <a href="category.php?category=interior" class="btn btn-outline-dark">Виж всички врати</a>
+        </div>
+
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
     
@@ -111,6 +115,10 @@ const swiper = new Swiper('.swiper', {
 
 
 <style>
+.swiper-pagination {
+  margin-top: 30px !important;
+  position: relative !important;
+}
 .swiper-button-prev, .swiper-button-next {
     color: #000 !important; /* Change arrow color to black */
     display: flex;
