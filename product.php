@@ -17,6 +17,7 @@ $meta_description =  $door_data[0]['meta_description'];
 include_once 'includes/header.php'; 
 
 ?>
+
 <div class="conent">
     <div class="container-fluid">
         <h1 class="mt-3"><?php echo $display_cat =  $category=="interior" ? "Интериорни": "Екстериорни";?> врати ArtDecorDoors</h1>
@@ -35,8 +36,9 @@ include_once 'includes/header.php';
     </div>
 
 </div>
-
-<style>
-
-</style>
-<?php include_once 'includes/footer.php'; ?>
+<?php
+// Product schema
+echo '<script type="application/ld+json">';
+echo $door->generateProductStructuredData($door_id);
+echo '</script>';
+ include_once 'includes/footer.php'; ?>

@@ -39,8 +39,6 @@ $distribution = $distribution->getDistributors();
 <?php }
 ?>
 
-<h2 class="text-center mt-5">Искаш да станеш дистрибутор?</h2>
-<p class="text-center">Свържи се с нас</p>
 </div>
 
 <?php include_once "includes/footer.php"; ?>

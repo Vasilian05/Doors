@@ -201,4 +201,60 @@ class Doors extends Dbh {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    // Generate product rich data 
+    public function generateProductStructuredData($door_id) {
+        $product = $this->getDoorWithDetails($door_id);
+        if (!$product) return '';
+
+        $data = [
+            "@context" => "https://schema.org",
+            "@type" => "Product",
+            "name" => $product['name'],
+            "image" => 'https://artdecordoors.com/'. $product['image'],
+            "description" => $product['description'],
+            "brand" => [
+                "@type" => "Brand",
+                "name" => $product['brand_name']
+            ],
+            "offers" => [
+                "@type" => "Offer",
+                "priceCurrency" => "BGN",
+                "price" => $product['price'],
+                "availability" => $product['stock'] > 0 
+                    ? "https://schema.org/InStock" 
+                    : "https://schema.org/OutOfStock",
+                "itemCondition" => "https://schema.org/NewCondition"]
+        ];
+
+        /* For reviews
+        if (isset($product['rating'])) {
+            $data['aggregateRating'] = [
+                "@type" => "AggregateRating",
+                "ratingValue" => $product['rating'],
+                "reviewCount" => $product['review_count']
+            ];
+        }
+        */
+
+        return json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    }
+
+    // gets complete details about a door including brand name 
+    private function getDoorWithDetails($door_id) {
+        $stmt = $this->connect()->prepare(
+            "SELECT d.*, b.brand_name, c.category_name 
+             FROM Door d
+             JOIN Brand_Category bc ON d.brand_category_id = bc.brand_category_id
+             JOIN Brand b ON bc.brand_id = b.brand_id
+             JOIN Category c ON bc.category_id = c.category_id
+             WHERE d.door_id = ?"
+        );
+        
+        if ($stmt->execute([$door_id])) {
+            return $stmt->fetch();
+        }
+        return false;
+    }
+
 }
