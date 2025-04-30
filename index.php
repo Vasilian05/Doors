@@ -74,7 +74,7 @@ $doors = $doors->getProducts(2);
             ?>
         </div>
         <div class="text-center mt-4">
-             <a href="category.php?category=interior" class="btn btn-outline-dark">Виж всички врати</a>
+             <a href="products.php?category=exterior"> class="btn btn-outline-dark">Виж всички врати</a>
         </div>
 
         <!-- If we need pagination -->
