@@ -75,8 +75,8 @@ $distribution = $distribution->getDistributors();
       </div>
     <?php } ?>
   <!-- Transition Element -->
-<div class="section-transition">
-</div>
+  <div class="section-transition">
+  </div>
 
   <div class="suitability-section">
     <h3 class="section-title">Подходящо ли е за теб?</h3>
@@ -104,7 +104,40 @@ $distribution = $distribution->getDistributors();
       </div>
       <!-- Repeat for other items -->
   </div>
+  </div>
+  <!-- Testimonials Section -->
+<div class="testimonials-section">
+  <h2 class="section-title">Отзиви от нашите дистрибутори</h2>
+  <div class="testimonials-container">
+    <div class="testimonials-track">
+      <!-- Testimonial Items (Double set for infinite loop) -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Работим с ArtDecor Doors от 5 години и сме изключително доволни от качеството и професионализма."</p>
+          <div class="author">- Георги Иванов, Елегант-21</div>
+        </div>
+      </div>
+      <!-- Repeat 7 more testimonials -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Дистрибуцията с ArtDecor Doors ни помогна да разширим бизнеса си в региона. Поддръжката и бързите 
+            доставки правят всичко лесно и приятно."</p>
+          <div class="author">- Георги Иванов, Елегант-21</div>
+        </div>
+      </div>
+      <!-- Duplicate the same 8 testimonials -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Сътрудничеството с ArtDecor Doors беше най-доброто бизнес решение за нашия магазин за интериорни решения. 
+            Асортиментът е богат, а условията — отлични."</p>
+          <div class="author">- Георги Иванов, Елегант-21</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
 </div>
 
 <style>
@@ -341,6 +374,100 @@ $distribution = $distribution->getDistributors();
 .animated-gradient {
   height: 0;
   overflow: hidden;
+}
+
+/* Full Width Testimonials Section */
+.testimonials-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #f8f9fa;
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+/* Center-aligned heading */
+.section-title {
+  text-align: center;
+  width: 75%;
+  margin: 0 auto 40px;
+  color: #383E42;
+  font-size: 2rem;
+}
+
+/* Carousel Container */
+.testimonials-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Scrolling Track */
+.testimonials-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+  padding: 0 20px; /* Prevents cards from touching edges */
+}
+
+/* Individual Testimonial Cards */
+.testimonial-card {
+  flex: 0 0 calc(100vw / 3 - 40px); /* 3 cards with gap adjustment */
+  max-width: calc(100vw / 3 - 40px);
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-right: 10px;
+}
+
+.testimonial-content p {
+  font-style: italic;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.author {
+  font-weight: bold;
+  color: #383E42;
+  font-size: 1rem;
+}
+
+/* Animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pause on hover */
+.testimonials-track:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .testimonial-card {
+    flex: 0 0 calc(100vw / 2 - 60px); /* 2 cards on tablet */
+    max-width: calc(100vw / 2 - 60px);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex: 0 0 calc(100vw - 80px); /* 1 card on mobile */
+    max-width: calc(100vw - 80px);
+    padding: 25px;
+  }
+  
+  .section-title {
+    width: 85%;
+    font-size: 1.8rem;
+  }
 }
 </style>
 
