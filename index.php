@@ -18,21 +18,16 @@ $doors = $doors->getProducts(1);
     
 </head>
 <div class="cintent">
-    <main>
-        <div class="container-fluid">
+    <div class="container-fluid">
     
-            <div class="row">
-            <div class="main-intro col">
-                <h1 class="fs-1">Фабрика за врати <br>ArtDoors</h1>
-                <p>номер 1 пройзводител на интериорни и <br>входини врати за страната</p>
-                <button type="button" class="btn btn-outline-dark">Научи повече</button>
+        <div class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>Склад за врати ArtDoors</h1>
+                <p class="hero-subtitle">Вносител на интериорни и входни врати за страната</p>
+                <a href="#" class="btn btn-outline-light">Научи повече</a>
             </div>
-            <div class="col">
-                <p>Страхотно отношение и много добро качество, <br> наистина впечатляващо <br><br> - Катя Николова </p>
-                <p>Да имаш милост към немилостивите е така подло, <br> както да я очакваш от тях... <br><br> - Иван Вазов </p>
-            </div>
-            </div>
-        </main>
+        </div>
         
         <section class="info">
         

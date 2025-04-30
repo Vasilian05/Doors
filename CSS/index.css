@@ -1,33 +1,70 @@
-main {
-    width: 100%;
-    height: calc(100vh - 60px);
-    background-image: url(../images/triangle-mosaic.png);
-    background-size: cover;
+.hero-section {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    background-image: url(../images/blue-door-room-6toqsy.jpg);  
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: cover; 
     display: flex;
-    justify-content: center;
     align-items: center;
+    color: white;
+    overflow: hidden;
+  }
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%),
+    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
 }
 
-main h1{
-    margin-bottom: 5%;
-}
-main .main-intro {
-    margin-right: 40px;
-    padding-bottom: 8vh;
-
-}
-main .quote {
-    padding-bottom: 8vh;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
 }
 
-main .quotes p {
-    border-left: 3px solid #2e3134;
-    padding-left: 20px;
-    margin: 40px 0;
-    
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  line-height: 1.2;
+  
 }
-main .quotes p:nth-child(2) {
-    margin-left:100px;
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 3px rgba(0,0,0,0.5);
+  font-weight: 300;
 }
 
 
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .hero-button {
+    padding: 10px 25px;
+  }
+}
+
+.btn:hover {
+    background-color: #FFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}

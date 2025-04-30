@@ -114,7 +114,31 @@ $distribution = $distribution->getDistributors();
       <div class="testimonial-card">
         <div class="testimonial-content">
           <p>"Работим с ArtDecor Doors от 5 години и сме изключително доволни от качеството и професионализма."</p>
-          <div class="author">- Георги Иванов, Елегант-21</div>
+          <div class="author">- Елеонора Николова, Елегант-21</div>
+        </div>
+      </div>
+      <!-- Testimonial Items (Double set for infinite loop) -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Впечатлени сме от професионализма и вниманието към всеки детайл. Работата с тях е удоволствие, 
+            а печалбите са стабилни."</p>
+          <div class="author">- Dir Door</div>
+        </div>
+      </div>
+      <!-- Testimonial Items (Double set for infinite loop) -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"Като дистрибутор получаваме отлични търговски условия и винаги можем да разчитаме на екипа за съдействие. 
+            Клиентите ни харесват модерния дизайн и здравината на вратите."</p>
+          <div class="author">- ЕС ТРЕЙД</div>
+        </div>
+      </div>
+      <!-- Testimonial Items (Double set for infinite loop) -->
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"ArtDecor Doors е символ на качество. Нямаме нито една рекламация от клиенти 
+            — това говори само по себе си!"</p>
+          <div class="author">- Vidov Commerce</div>
         </div>
       </div>
       <!-- Repeat 7 more testimonials -->
@@ -122,7 +146,7 @@ $distribution = $distribution->getDistributors();
         <div class="testimonial-content">
           <p>"Дистрибуцията с ArtDecor Doors ни помогна да разширим бизнеса си в региона. Поддръжката и бързите 
             доставки правят всичко лесно и приятно."</p>
-          <div class="author">- Георги Иванов, Елегант-21</div>
+          <div class="author">- Brahmen</div>
         </div>
       </div>
       <!-- Duplicate the same 8 testimonials -->
