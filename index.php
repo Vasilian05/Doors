@@ -45,8 +45,8 @@ $doors = $doors->getProducts(2);
             </div>
         </section>
     
-        <div class="container my-5">
-    <h2 class="text-center mb-4">Нашите Категории</h2>
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Нашите Категории</h2>
 
     <div class="row g-4">
         <!-- Interior Doors Tile -->
