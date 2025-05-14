@@ -35,6 +35,9 @@ if (isset($_POST['update'])) {
     $new_price = $_POST['price'];
     $new_description = $_POST['description'];
     $new_short_description = $_POST['short_description'];
+    $new_frame_width = $_POST['frame_width'];
+    $new_leaf_size = $_POST['leaf_size'];
+    $new_frame_overall_size = $_POST['rame_overall_size'];
     $new_brand_id = $_POST['brand_id'];
     $new_category_id = $_POST['category_id'];
     
@@ -47,7 +50,11 @@ if (isset($_POST['update'])) {
             $_FILES['image']['size'] > 0 ? $_FILES['image'] : null, 
             $new_short_description
         );
-        
+        error_log("Attempting to update door with measurements: " . print_r([
+            'frame_width' => $new_frame_width,
+            'frame_leaf' => $new_frame_leaf,
+            'frame_overall_size' => $new_frame_overall_size
+        ], true));
         if ($products->editDoor($door_id, $new_price, $_FILES['image']['size'] > 0 ? $_FILES['image'] : null)) {
             header("Location: admin.php?success=door_updated");
             exit();

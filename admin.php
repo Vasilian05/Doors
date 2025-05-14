@@ -93,6 +93,18 @@ foreach ($all_products as $product) {
             <textarea required id="tiny" class="form-control" name="short_description"></textarea>
         </div>
         <div class="mb-3">
+            <label class="form-label">Размер на каса</label>
+            <textarea required class="form-control" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Размер на крило</label>
+            <textarea required class="form-control" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Габарит на каса</label>
+            <textarea required class="form-control" name="description"></textarea>
+        </div>
+        <div class="mb-3">
             <label class="form-label">Марка</label>
             <select required name="brand_id" class="form-select">
                 <option value="">Избери марка</option>

@@ -45,6 +45,83 @@ $doors = $doors->getProducts(2);
             </div>
         </section>
     
+        <div class="container my-5">
+    <h2 class="text-center mb-4">Нашите Категории</h2>
+
+    <div class="row g-4">
+        <!-- Interior Doors Tile -->
+        <div class="col-md-6">
+            <div class="category-tile text-white position-relative rounded-3 h-100" style="background-image: url('Screenshot\ 2025-05-10\ at\ 08.54.40.png');">
+                <div class="overlay rounded-3 p-4 h-100">
+                    <div class="d-flex align-items-center mb-3">
+                        <h3 class="mb-0">Интериорни Врати</h3>
+                    </div>
+                    <div class="subcategories mt-3">
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <a href="products.php?category=BestDoor" class="subcategory-tile text-white text-center">
+                                    <h5>Best Door</h5>
+                                    <small>Премиум качество</small>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="products.php?category=VarioDoor" class="subcategory-tile text-white text-center">
+                                    <h5>Variodor</h5>
+                                    <small>Разнообразие от дизайни</small>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="products.php?category=PerfectDoor" class="subcategory-tile text-white text-center">
+                                    <h5>Perfect Door</h5>
+                                    <small>Идеална функционалност</small>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="products.php?category=ElitDoor" class="subcategory-tile text-white text-center">
+                                    <h5>Elit Door</h5>
+                                    <small>Ексклузивни модели</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="justify-content-center m-5">
+                        <a href="products.php?category=interior" class="btn btn-outline-light mt-auto ">Виж всички интериорни врати</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exterior Doors Tile -->
+        <div class="col-md-6">
+            <div class="category-tile text-white position-relative rounded-3 h-100" style="background-image: url('Screenshot\ 2025-05-10\ at\ 08.54.40.png');">
+                <div class="overlay rounded-3 p-4 h-100">
+                    <div class="d-flex align-items-center mb-3">
+                        <h3 class="mb-0">Входни Врати</h3>
+                    </div>
+                    
+                    <div class="subcategories mt-3">
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <a href="products.php?category=ByDoor" class="subcategory-tile text-white text-center">
+                                    <h5>ByDoor</h5>
+                                    <small>Премиум качество</small>
+                                </a>
+                            </div>
+                            <div class="col-12">
+                                <a href="products.php?category=ArtDoor" class="subcategory-tile text-white text-center">
+                                    <h5>ArtDoor</h5>
+                                    <small>Разнообразие от дизайни</small>
+                                </a>
+                            </div>
+                </div>
+            </div>
+                    <div class="justify-content-center m-5">
+                        <a href="products.php?category=exterior" class="btn btn-outline-light mt-auto ">Виж всички входни врати</a>
+                    </div>
+        </div>
+    </div>
+</div>
+
         </div>    
         <!-- Slider main container -->
     <!-- Slider main container -->
@@ -135,5 +212,64 @@ const swiper = new Swiper('.swiper', {
 .swiper-pagination-bullet-active {
     background: #000 !important; /* Change active pagination dot color to black */
 }
+
+.category-tile {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 400px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-tile:hover {
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.subcategory-tile {
+    display: block;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    text-decoration: none;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.subcategory-tile:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.subcategory-tile h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.category-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+    .category-tile {
+        margin-bottom: 1.5rem;
+        min-height: 300px;
+    }
+}
+
+
 </style>
 <?php include 'includes/footer.php' ?>
